@@ -1,0 +1,702 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>客户信息</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body data-type="generalComponents">
+<header class="am-topbar am-topbar-inverse admin-header">
+    <div class="am-topbar-brand">
+        <a href="javascript:;" class="tpl-logo">
+            <img src="/assets/img/logo.png" alt="">
+        </a>
+    </div>
+    <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+    </div>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+            <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+            <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+                    <span class="tpl-header-list-user-nick">禁言小张</span><span class="tpl-header-list-user-ico"><img src="/assets/img/user01.png"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
+                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
+            </li>
+            <li><a href="###" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+        </ul>
+    </div>
+</header>
+<div class="tpl-page-container tpl-page-header-fixed">
+    <div class="tpl-left-nav tpl-left-nav-hover">
+        <div class="tpl-left-nav-title">
+            Shoes 列表
+        </div>
+        <div class="tpl-left-nav-list">
+            <ul class="tpl-left-nav-menu">
+                <li class="tpl-left-nav-item">
+                    <a href="index.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-home"></i>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-bar-chart"></i>
+                        <span>数据表</span>
+                        <i class="tpl-left-nav-content tpl-badge-danger">
+                            12
+                        </i>
+                    </a>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <!-- 打开状态 a 标签添加 active 即可   -->
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
+                        <i class="am-icon-table"></i>
+                        <span>客户管理</span>
+                        <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display:block">
+                        <li>
+                            <!-- 打开状态 a 标签添加 active 即可   -->
+                            <a href="/show_customer_info.html" class="active">
+                                <i class="am-icon-angle-right"></i>
+                                <span>客户信息</span>
+                            </a>
+                            <a href="/show_recharge_record.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>充值记录</span>
+                            </a>
+                            <a href="/show_expense_record.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>消费记录</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-wpforms"></i>
+                        <span>表单</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="form-amazeui.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>Amaze UI 表单</span>
+                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+
+                            <a href="form-line.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>线条表单</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="login.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-key"></i>
+                        <span>登录</span>
+
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="tpl-content-wrapper">
+        <div class="tpl-content-page-title">客户信息</div>
+        <ol class="am-breadcrumb">
+            <li><a href="#" class="am-icon-home">首页</a></li>
+            <li>客户管理</a></li>
+            <li class="am-active">客户信息</li>
+        </ol>
+        <div class="tpl-portlet-components">
+            <div class="portlet-title">
+                <div class="caption font-green bold">
+                    <span class="am-icon-code"></span> 客户信息
+                </div>
+            </div>
+            <div class="tpl-block">
+                <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-6">
+                        <div class="am-btn-toolbar">
+                            <div class="am-btn-group am-btn-group-xs">
+                                <button type="button" class="am-btn am-btn-default am-btn-success" id="insert_customer_info_btn"><span class="am-icon-plus"></span> 新增</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-3">
+                        <div class="am-input-group am-input-group-sm">
+                            <input type="text" class="am-form-field" id="keyValue" placeholder="搜索姓名/手机号">
+                            <span class="am-input-group-btn">
+                                <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="button"></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-g">
+                    <div class="am-u-sm-12">
+                        <table class="am-table am-table-striped am-table-hover table-main" id="customer_infos">
+                            <thead>
+                                <tr>
+                                    <th class="table-title">客户姓名</th>
+                                    <th class="table-type">手机号</th>
+                                    <th class="table-author am-hide-sm-only">充值金额</th>
+                                    <th class="table-author am-hide-sm-only">剩余金额</th>
+                                    <th class="table-date am-hide-sm-only">办理人</th>
+                                    <th class="table-date am-hide-sm-only">修改日期</th>
+                                    <th class="table-set">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody><tr><td colspan="8" style="text-align: center;">暂无数据</td></tr></tbody>
+                        </table>
+                        <div class="am-cf"><div class="am-fr" id="customer_infosPage"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tpl-alert"></div>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="insert_customer_info_model">
+    <div class="am-modal-dialog">
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal" id="insert_customer_info_form">
+                <fieldset>
+                    <legend>新增客户</legend>
+                    <div class="am-form-group">
+                        <label for="insert_customerinfoName">客户姓名</label>
+                        <input type="text" id="insert_customerinfoName" name="customerinfoName" placeholder="输入客户姓名">
+                    </div>
+                    <div class="am-form-group">
+                        <label for="insert_phone">手机号</label>
+                        <input type="text" id="insert_phone" name="phone" placeholder="输入客户手机号">
+                    </div>
+                    <div class="am-form-group">
+                        <label for="insert_rechargeAmount">充值金额</label>
+                        <input type="text" id="insert_rechargeAmount" name="rechargeAmount" placeholder="输入充值金额">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="recharge_model">
+    <div class="am-modal-dialog">
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal" id="recharge_form">
+                <fieldset>
+                    <legend>充值服务</legend>
+                    <div class="am-form-group">
+                        <label for="insert_customerinfoName">客户姓名</label>
+                        <input type="hidden" id="recharge_customerinfoId">
+                        <input type="text" id="recharge_customerinfoName" name="customerinfoName" readonly>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="insert_phone">手机号</label>
+                        <input type="text" id="recharge_phone" name="phone" readonly>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="insert_rechargeAmount">充值金额</label>
+                        <input type="text" id="recharge_rechargeAmount" name="rechargeAmount" placeholder="输入充值金额">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="consumption_model">
+    <div class="am-modal-dialog">
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal" id="consumption_form">
+                <fieldset>
+                    <legend>消费服务</legend>
+                    <div class="am-form-group">
+                        <label for="insert_customerinfoName">客户姓名</label>
+                        <input type="hidden" id="consumption_customerinfoId">
+                        <input type="text" id="consumption_customerinfoName" name="customerinfoName" readonly>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="insert_phone">手机号</label>
+                        <input type="text" id="consumption_phone" name="phone" readonly>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="consumption_serviceId">消费类型</label>
+                        <select id="consumption_serviceId" required></select>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="insert_rechargeAmount">消费金额</label>
+                        <input type="text" id="consumption_servicePrice" name="servicePrice" readonly>
+                        <input type="hidden" id="consumption_balance">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="/assets/js/app.js"></script>
+<script>
+    $(function() {
+        $('#insert_customer_info_btn').on('click', function() {
+            $('#insert_customer_info_model').modal({
+                relatedTarget: this,
+                onConfirm: function(e)
+                {
+                    var customerinfoName=$("#insert_customerinfoName").val();
+                    var phone=$("#insert_phone").val();
+                    var rechargeAmount=$("#insert_rechargeAmount").val();
+                    if(null!=customerinfoName&&""!=customerinfoName)
+                    {
+                        if(/^1[34578]\d{9}$/.test(phone))
+                        {
+                            $.ajax({
+                                url:"customer_infoController/find_customer_infoByphone",
+                                type:"post",
+                                dataType:"json",
+                                data:{phone:phone},
+                                success:function(para)
+                                {
+                                    if(para.result)
+                                        show_alert("警告","客户手机号已存在,请重新输入!");
+                                    else
+                                        check_rechargeAmount(customerinfoName,phone,rechargeAmount);
+                                }
+                            });
+                        }
+                        else
+                            show_alert("警告","客户手机号有误,请重新输入!");
+                    }
+                    else
+                        show_alert("警告","客户名称不能为空,请重新输入!");
+                    clear_insert_customer_info();
+                },onCancel: function(e) {
+                    clear_insert_customer_info();
+                }
+            });
+        });
+        find_customer_infoByphoneAndcustomerinfoNamelike(1);
+    });
+    //校验充值金额
+    function check_rechargeAmount(customerinfoName,phone,rechargeAmount)
+    {
+        if(isNumber(rechargeAmount))
+        {
+            if(0<=parseFloat(rechargeAmount))
+            {
+                $.ajax({
+                    url:"set_mealController/find_set_mealBysetMealPriceOrderdescAndStateId",
+                    dataType:"json",
+                    type:"post",
+                    success:function(data)
+                    {
+                        if(data.result)
+                        {
+                            if(rechargeAmount<=data.set_meal.setMealPrice)
+                                insert_customer_info(customerinfoName,phone,rechargeAmount);
+                            else
+                                show_alert("提示","抱歉,最大充值金额"+data.set_meal.setMealPrice+"元,请重试!");
+                        }
+                        else
+                        {
+                            if(rechargeAmount<=1000)
+                                insert_customer_info(customerinfoName,phone,rechargeAmount);
+                            else
+                                show_alert("提示","抱歉,最大充值金额1000元,请重试!");
+                        }
+                    },
+                    error:function()
+                    {
+                        show_alert("提示","抱歉,获取最大金额失败,请重试!");
+                    }
+                });
+            }
+            else
+                show_alert("警告","充值金额不能小于零,请重新输入!");
+        }
+        else
+            show_alert("警告","充值金额输入错误,请重新输入!");
+    }
+    //添加客户
+    function insert_customer_info(customerinfoName,phone,rechargeAmount)
+    {
+        $.ajax({
+            url:"customer_infoController/insert_customer_info",
+            type:"post",
+            dataType:"json",
+            data:{customerinfoName:customerinfoName,phone:phone,rechargeAmount:rechargeAmount},
+            success:function(data)
+            {
+                find_customer_infoByphoneAndcustomerinfoNamelike(1);
+            },
+            error:function()
+            {
+                show_alert("提示","添加用户失败,请重试!")
+            }
+        });
+    }
+    //通过页数和键值查询客户
+    function find_customer_infoByphoneAndcustomerinfoNamelike(pageIndex)
+    {
+        $.ajax({
+            url:"customer_infoController/find_customer_infoByphoneAndcustomerinfoNamelike",
+            type:"post",
+            dataType:"json",
+            data:{pageIndex:pageIndex,keyValue:$("#keyValue").val()},
+            success:function (data)
+            {
+                if(data.result&&0<data.customer_infos.length)
+                {
+                        var customer_infosPageHtml="<ul class='am-pagination tpl-pagination'>";
+                        if(1!=data.currentIndex)
+                            customer_infosPageHtml+="<li onclick='find_customer_infoByphoneAndcustomerinfoNamelike("+(data.currentIndex-1)+")'><a href='javascript:;'>«</a></li>";
+                        for(var i=data.currentIndex-4;i<data.currentIndex;i++)
+                        {
+                            if(i>0)
+                                customer_infosPageHtml+="<li onclick='find_customer_infoByphoneAndcustomerinfoNamelike("+i+")'><a href='javascript:;'>"+i+"</a></li>";
+                        }
+                        customer_infosPageHtml+="<li class='am-active'><a>"+data.currentIndex+"</a></li>";
+                        var page=data.currentIndex+4;
+                        if(page>data.pageCount)
+                            page=data.pageCount;
+                        for(var i=data.currentIndex+1;i<=page;i++)
+                        {
+                            customer_infosPageHtml+="<li onclick='find_customer_infoByphoneAndcustomerinfoNamelike("+i+")'><a href='javascript:;'>"+i+"</a></li>";
+                        }
+                        if(data.pageCount!=data.currentIndex)
+                            customer_infosPageHtml+="<li onclick='find_customer_infoByphoneAndcustomerinfoNamelike("+(data.currentIndex+1)+")'><a href='javascript:;'>»</a></li>";
+                        customer_infosPageHtml+="</ul>";
+                        $("#customer_infosPage").html(customer_infosPageHtml);
+
+                    var customer_infosHtml="";
+                    for(var i=0;i<data.customer_infos.length;i++)
+                    {
+                        customer_infosHtml+="<tr><td>"+data.customer_infos[i].customerinfoName+"</td><td>"+data.customer_infos[i].phone+"</td><td class='am-hide-sm-only'>"+data.customer_infos[i].rechargeAmount+"</td><td class='am-hide-sm-only'>"+data.customer_infos[i].balance+"</td><td class='am-hide-sm-only'>"+data.customer_infos[i].admin.adminName+"</td><td class='am-hide-sm-only'>"+data.customer_infos[i].updateDate+"</td><td><div class='am-btn-toolbar'><div class='am-btn-group am-btn-group-xs'><button class='am-btn am-btn-default am-btn-xs am-text-secondary' data-customerinfoId='"+data.customer_infos[i].customerinfoId+"' onclick='recharge(this)'><i class='far fa-credit-card'></i>充值</button><button class='am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only' data-customerinfoId='"+data.customer_infos[i].customerinfoId+"' onclick='consumption(this)'>消费</button></div></div></td></tr>";
+                    }
+                    $("#customer_infos tbody").html(customer_infosHtml);
+                }
+                else
+                    empty_customer_infos();
+            },
+            error:function()
+            {
+                empty_customer_infos();
+            }
+        });
+    }
+    //搜素客户
+    $("#keyValue").keyup(
+        function()
+        {
+            find_customer_infoByphoneAndcustomerinfoNamelike(1);
+        }
+    );
+    //点击充值时
+    function recharge(obj)
+    {
+        var customerinfoId=$(obj).attr("data-customerinfoId");
+        $.ajax({
+            url:"customer_infoController/find_customer_infoBycustomerinfoId",
+            dataType:"json",
+            type:"post",
+            data:{customerinfoId:customerinfoId},
+            success:function (data) {
+                if(data.result)
+                {
+                    $("#recharge_customerinfoName").val(data.customer_info.customerinfoName);
+                    $("#recharge_phone").val(data.customer_info.phone);
+                    $("#recharge_customerinfoId").val(data.customer_info.customerinfoId)
+                    $('#recharge_model').modal({
+                        relatedTarget: this,
+                        onConfirm: function(e)
+                        {
+                            var rechargeAmount=$("#recharge_rechargeAmount").val();
+                            if(isNumber(rechargeAmount))
+                            {
+                                if(0<parseFloat(rechargeAmount))
+                                {
+                                    $.ajax({
+                                        url:"set_mealController/find_set_mealBysetMealPriceOrderdescAndStateId",
+                                        dataType:"json",
+                                        type:"post",
+                                        success:function(data)
+                                        {
+                                            if(data.result)
+                                            {
+                                                if(rechargeAmount<=data.set_meal.setMealPrice)
+                                                {
+                                                    update_customer_info_rechargeAmountAndbalanceBycustomerinfoId($("#recharge_customerinfoId").val(),rechargeAmount);
+                                                }
+                                                else
+                                                    show_alert("提示","抱歉,最大充值金额"+data.set_meal.setMealPrice+"元,请重试!");
+                                            }
+                                            else
+                                            {
+                                                if(rechargeAmount<=1000)
+                                                {
+                                                    update_customer_info_rechargeAmountAndbalanceBycustomerinfoId($("#recharge_customerinfoId").val(),rechargeAmount);
+                                                }
+                                                else
+                                                    show_alert("提示","抱歉,最大充值金额1000元,请重试!");
+                                            }
+                                        },
+                                        error:function()
+                                        {
+                                            show_alert("提示","抱歉,获取最大金额失败,请重试!");
+                                            clear_recharge();
+                                        }
+                                    });
+                                }
+                                else
+                                    show_alert("警告","充值金额不能小于或等于零,请重新输入!");
+                            }
+                            else
+                                show_alert("警告","充值金额错误,请重新输入!");
+                        },
+                        onCancel:function(e)
+                        {
+                            clear_recharge();
+                        }
+                    });
+                }
+                else
+                    show_alert("提示","加载客户信息失败,请重试");
+            },
+            error:function()
+            {
+                show_alert("提示","加载客户信息失败,请重试");
+            }
+        });
+    }
+    //充值,并新增充值记录
+    function update_customer_info_rechargeAmountAndbalanceBycustomerinfoId(customerinfoId,rechargeAmount)
+    {
+        $.ajax({
+            url:"customer_infoController/update_customer_info_rechargeAmountAndbalanceBycustomerinfoId",
+            dataType:"json",
+            type:"post",
+            data:{customerinfoId:customerinfoId,rechargeAmount:rechargeAmount},
+            success:function (data)
+            {
+                if(data)
+                {
+                    show_alert("提示","充值成功!");
+                    find_customer_infoByphoneAndcustomerinfoNamelike(1);
+                }
+                else
+                    show_alert("提示","充值失败,请重试!");
+                clear_recharge();
+            },
+            error:function () {
+                show_alert("提示","充值失败,请重试!");
+                clear_recharge();
+            }
+        });
+    }
+    //点击消费时
+    function consumption(obj)
+    {
+        var customerinfoId=$(obj).attr("data-customerinfoId");
+        var customerinfoId=$(obj).attr("data-customerinfoId");
+        $.ajax({
+            url:"customer_infoController/find_customer_infoBycustomerinfoId",
+            dataType:"json",
+            type:"post",
+            data:{customerinfoId:customerinfoId},
+            success:function (data) {
+                if(data.result)
+                {
+                    $("#consumption_customerinfoName").val(data.customer_info.customerinfoName);
+                    $("#consumption_phone").val(data.customer_info.phone);
+                    $("#consumption_customerinfoId").val(data.customer_info.customerinfoId);
+                    $("#consumption_balance").val(data.customer_info.balance);
+                    $.ajax({
+                        url:"serviceController/find_serviceBystateId",
+                        dataType:"json",
+                        type:"post",
+                        success:function(servicedata)
+                        {
+                            if(servicedata.result)
+                            {
+                                var consumption_serviceIdHtml="";
+                                for(var i=0;i<servicedata.service.length;i++)
+                                {
+                                    if(i==0)
+                                    {
+                                        consumption_serviceIdHtml+="<option data-servicePrice='"+servicedata.service[i].servicePrice+"' value='"+servicedata.service[i].serviceId+"' selected='selected'>"+servicedata.service[i].serviceName+"</option>";
+                                        $("#consumption_servicePrice").val(servicedata.service[i].servicePrice);
+                                    }
+                                    else
+                                        consumption_serviceIdHtml+="<option data-servicePrice='"+servicedata.service[i].servicePrice+"' value='"+servicedata.service[i].serviceId+"'>"+servicedata.service[i].serviceName+"</option>";
+                                }
+                                $("#consumption_serviceId").html(consumption_serviceIdHtml);
+                                $("#consumption_serviceId").change(
+                                    function()
+                                    {
+                                        var selectoption=$("#consumption_serviceId option:selected");
+                                        var servicePrice=selectoption.attr("data-servicePrice");
+                                        $("#consumption_servicePrice").val(servicePrice);
+                                    }
+                                );
+                                $('#consumption_model').modal({
+                                    relatedTarget: this,
+                                    onConfirm: function(e)
+                                    {
+                                        var consumption_balance=parseFloat($("#consumption_balance").val());
+                                        var consumption_servicePrice=parseFloat($("#consumption_servicePrice").val());
+                                        if(consumption_balance<consumption_servicePrice)
+                                        {
+                                            show_alert("提示","抱歉,该客户余额不足请充值");
+                                            clear_recharge();
+                                        }
+                                        else
+                                        {
+                                            var selectoption=$("#consumption_serviceId option:selected");
+                                            var serviceId=selectoption.val();
+                                            var customerinfoId=$("#consumption_customerinfoId").val();
+                                            $.ajax({
+                                                url:"customer_infoController/update_customer_info_balance_expense_record",
+                                                dataType:"json",
+                                                type:"post",
+                                                data:{customerinfoId:customerinfoId,serviceId:serviceId},
+                                                success:function(data)
+                                                {
+                                                    if(data)
+                                                    {
+                                                        show_alert("提示","该用户进行消费成功!");
+                                                        find_customer_infoByphoneAndcustomerinfoNamelike(1);
+                                                    }
+                                                    else
+                                                        show_alert("提示","抱歉,该用户进行消费失败,请重试!");
+                                                    clear_recharge();
+                                                },
+                                                error:function () {
+                                                    show_alert("提示","抱歉,该用户进行消费失败,请重试!");
+                                                    clear_recharge();
+                                                }
+                                            });
+                                        }
+                                    },
+                                    onCancel:function(e)
+                                    {
+                                        clear_recharge();
+                                    }
+                                });
+                            }
+                            else
+                                show_alert("提示","抱歉加载服务类型失败,请重试!");
+                        },
+                        error:function()
+                        {
+                            show_alert("提示","抱歉加载服务类型失败,请重试!");
+                        }
+                    });
+                }
+                else
+                    show_alert("提示","加载客户信息失败,请重试");
+            },
+            error:function()
+            {
+                show_alert("提示","加载客户信息失败,请重试");
+            }
+        });
+    }
+    //客户信息为空时
+    function empty_customer_infos()
+    {
+        $("#customer_infos tbody").html("<tr><td colspan='7' style='text-align: center;'>暂无数据</td></tr>");
+        $("#customer_infosPage").html("");
+    }
+    //检测值是否为数字类型
+    function isNumber(val)
+    {
+        var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+        var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+        if (regPos.test(val) || regNeg.test(val)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //清空消费服务模态框的值
+    function clear_consumption()
+    {
+        $("#consumption_customerinfoName").val("");
+        $("#consumption_phone").val("");
+        $("#consumption_servicePrice").val("");
+        $("#consumption_customerinfoId").val("");
+        $("#consumption_balance").val("");
+    }
+    //清空充值服务模态框的值
+    function clear_recharge()
+    {
+        $("#recharge_customerinfoName").val("");
+        $("#recharge_phone").val("");
+        $("#recharge_rechargeAmount").val("");
+        $("#recharge_customerinfoId").val("");
+    }
+    //清除新增客户模态框的值
+    function clear_insert_customer_info()
+    {
+        $("#insert_customerinfoName").val("");
+        $("#insert_phone").val("");
+        $("#insert_rechargeAmount").val("");
+    }
+    /**
+     * 具有确认按钮的提示框
+     * @param state 状态
+     * @param message 信息
+     */
+    function show_alert(state,message)
+    {
+        $("#my_alert").remove();
+        $("body").append("<div class='am-modal am-modal-alert' tabindex='-1' id='my_alert'><div class='am-modal-dialog'><div class='am-modal-hd'>"+state+"</div><div class='am-modal-bd'>"+message+"</div><div class='am-modal-footer'><span class='am-modal-btn'>确定</span></div></div></div>");
+        $('#my_alert').modal();
+    }
+    /**
+     * 提示信息
+     * */
+    function prompt(str){
+        $('.am-alert').alert('close');
+        $("#hint").append("<div class=\"am-alert\" data-am-alert>\n" +
+            "            <button type=\"button\" class=\"am-close\">&times;<tton>\n" +
+            "            <p>"+str+"</p>\n" +
+            "        </div>");
+        $('.am-alert').alert();
+    }
+</script>
+</body>
+</html>
