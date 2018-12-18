@@ -21,14 +21,16 @@ public class shiroFilter {
     public ShiroFilterFactoryBean shiroFilterFactoryBean(){
         ShiroFilterFactoryBean shiroFilterFactoryBean=new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager());
+        Map Map=new LinkedHashMap();
+        Map.put("authc",new MyFormAuthenticationFilter());
+        shiroFilterFactoryBean.setFilters(Map);
         shiroFilterFactoryBean.setLoginUrl("/adminController/login");
         shiroFilterFactoryBean.setSuccessUrl("/adminController/SuccessIndex");
         Map<String,String> map=new LinkedHashMap<String,String>();
-        map.put("/static/**","anon");
+        map.put("/assets/**","anon");
         map.put("/logout","anon");
-        map.put("/favicon.ico","anon");
         map.put("/adminController/loginIndex","anon");
-        map.put("/adminController/login","authc");
+        map.put("/**","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         return shiroFilterFactoryBean;
     }

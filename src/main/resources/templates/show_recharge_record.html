@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>充值记录</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body data-type="generalComponents">
+<header class="am-topbar am-topbar-inverse admin-header">
+    <div class="am-topbar-brand">
+        <a href="javascript:;" class="tpl-logo">
+            <img src="/assets/img/logo.png" alt="">
+        </a>
+    </div>
+    <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+    </div>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+            <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+            <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+                    <span class="tpl-header-list-user-nick">禁言小张</span><span class="tpl-header-list-user-ico"><img src="/assets/img/user01.png"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
+                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
+            </li>
+            <li><a href="###" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+        </ul>
+    </div>
+</header>
+<div class="tpl-page-container tpl-page-header-fixed">
+    <div class="tpl-left-nav tpl-left-nav-hover">
+        <div class="tpl-left-nav-title">
+            Shoes 列表
+        </div>
+        <div class="tpl-left-nav-list">
+            <ul class="tpl-left-nav-menu">
+                <li class="tpl-left-nav-item">
+                    <a href="index.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-home"></i>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-bar-chart"></i>
+                        <span>数据表</span>
+                        <i class="tpl-left-nav-content tpl-badge-danger">
+                            12
+                        </i>
+                    </a>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <!-- 打开状态 a 标签添加 active 即可   -->
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
+                        <i class="am-icon-table"></i>
+                        <span>客户管理</span>
+                        <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display:block">
+                        <li>
+                            <!-- 打开状态 a 标签添加 active 即可   -->
+                            <a href="/show_customer_info.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>客户信息</span>
+                            </a>
+                            <a href="/show_recharge_record.html" class="active">
+                                <i class="am-icon-angle-right"></i>
+                                <span>充值记录</span>
+                            </a>
+                            <a href="/show_expense_record.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>消费记录</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-wpforms"></i>
+                        <span>表单</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="form-amazeui.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>Amaze UI 表单</span>
+                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+
+                            <a href="form-line.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>线条表单</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="login.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-key"></i>
+                        <span>登录</span>
+
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="tpl-content-wrapper">
+        <div class="tpl-content-page-title">充值记录</div>
+        <ol class="am-breadcrumb">
+            <li><a href="#" class="am-icon-home">首页</a></li>
+            <li>客户管理</li>
+            <li class="am-active">充值记录</li>
+        </ol>
+        <div class="tpl-portlet-components">
+            <div class="portlet-title">
+                <div class="caption font-green bold">
+                    <span class="am-icon-code"></span> 充值记录
+                </div>
+            </div>
+            <div class="tpl-block">
+                <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-3">
+                        <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'yyyy-mm-dd'}">
+                            <input type="text" class="am-form-field" id="updateDate" placeholder="  搜索日期" readonly>
+                            <span class="am-input-group-btn am-datepicker-add-on">
+                                <button class="am-btn am-btn-default" type="button"><span class="am-icon-calendar"></span> </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-3">
+                        <div class="am-input-group am-input-group-sm">
+                            <input type="text" class="am-form-field" id="keyValue" placeholder="搜索姓名/手机号">
+                            <span class="am-input-group-btn">
+                                <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="button"></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-g">
+                    <div class="am-u-sm-12">
+                        <table class="am-table am-table-striped am-table-hover table-main" id="recharge_recordtable">
+                            <thead>
+                            <tr>
+                                <th class="table-title">客户姓名</th>
+                                <th class="table-type">手机号</th>
+                                <th class="table-author am-hide-sm-only">充值金额</th>
+                                <th class="table-author am-hide-sm-only">套餐名称</th>
+                                <th class="table-author am-hide-sm-only">套餐金额</th>
+                                <th class="table-author am-hide-sm-only">赠送金额</th>
+                                <th class="table-author am-hide-sm-only">办理人</th>
+                                <th class="table-date am-hide-sm-only">日期</th>
+                            </tr>
+                            </thead>
+                            <tbody><tr><td colspan="8" style="text-align: center;">暂无数据</td></tr></tbody>
+                        </table>
+                        <div class="am-cf"><div class="am-fr" id="recharge_recordPage"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tpl-alert"></div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="/assets/js/app.js"></script>
+<script>
+    $(function(){
+        find_recharge_recordBykeyValueorupdateDate(1);
+    });
+    //键值改变时查询客户
+    $("#keyValue").keyup(
+        function()
+        {
+            find_recharge_recordBykeyValueorupdateDate(1);
+        }
+    );
+    //时间改变时查询客户
+    $("#updateDate").change(
+        function () {
+            find_recharge_recordBykeyValueorupdateDate(1);
+        }
+    );
+    //查询客户
+    function find_recharge_recordBykeyValueorupdateDate(pageIndex)
+    {
+        var keyValue=$("#keyValue").val();
+        var updateDate=$("#updateDate").val();
+        $.ajax({
+            url:"recharge_recordController/find_recharge_recordBykeyValueorupdateDate",
+            dataType:"json",
+            type:"post",
+            data:{pageIndex:pageIndex,keyValue:keyValue,updateDate:updateDate},
+            success:function(data)
+            {
+                if(data.result&&0<data.recharge_record.length)
+                {
+                    var recharge_recordPageHtml="<ul class='am-pagination tpl-pagination'>";
+                    if(1!=data.currentIndex)
+                        recharge_recordPageHtml+="<li onclick='find_recharge_recordBykeyValueorupdateDate("+(data.currentIndex-1)+")'><a href='javascript:;'>«</a></li>";
+                    for(var i=data.currentIndex-4;i<data.currentIndex;i++)
+                    {
+                        if(i>0)
+                            recharge_recordPageHtml+="<li onclick='find_recharge_recordBykeyValueorupdateDate("+i+")'><a href='javascript:;'>"+i+"</a></li>";
+                    }
+                    recharge_recordPageHtml+="<li class='am-active'><a>"+data.currentIndex+"</a></li>";
+                    var page=data.currentIndex+4;
+                    if(page>data.pageCount)
+                        page=data.pageCount;
+                    for(var i=data.currentIndex+1;i<=page;i++)
+                    {
+                        recharge_recordPageHtml+="<li onclick='find_recharge_recordBykeyValueorupdateDate("+i+")'><a href='javascript:;'>"+i+"</a></li>";
+                    }
+                    if(data.pageCount!=data.currentIndex)
+                        recharge_recordPageHtml+="<li onclick='find_recharge_recordBykeyValueorupdateDate("+(data.currentIndex+1)+")'><a href='javascript:;'>»</a></li>";
+                    recharge_recordPageHtml+="</ul>";
+                    $("#recharge_recordPage").html(recharge_recordPageHtml);
+                    var recharge_recordtableHtml="";
+                    for(var i=0;i<data.recharge_record.length;i++)
+                    {
+                        recharge_recordtableHtml+="<tr><td>"+data.recharge_record[i].customer_info.customerinfoName+"</td><td>"+data.recharge_record[i].customer_info.phone+"</td><td class='am-hide-sm-only'>"+data.recharge_record[i].rechargeMoney+"</td>";
+                        if(null==data.recharge_record[i].set_meal)
+                            recharge_recordtableHtml+="<td class='am-hide-sm-only'>未符合套餐标准</td>";
+                        else
+                            recharge_recordtableHtml+="<td class='am-hide-sm-only'>"+data.recharge_record[i].set_meal.setMealName+"</td>";
+                        recharge_recordtableHtml+="<td class='am-hide-sm-only'>"+data.recharge_record[i].setMealPrice+"</td><td class='am-hide-sm-only'>"+data.recharge_record[i].givenPrice+"</td><td class='am-hide-sm-only'>"+data.recharge_record[i].admin.adminName+"</td><td class='am-hide-sm-only'>"+data.recharge_record[i].updateDate+"</td></tr>";
+                    }
+                    $("#recharge_recordtable tbody").html(recharge_recordtableHtml);
+                }
+                else
+                    $("#recharge_recordtable tbody").html("<tr><td colspan='8' style='text-align: center;'>暂无数据</td></tr>");
+            },
+            error:function()
+            {
+                $("#recharge_recordtable tbody").html("<tr><td colspan='8' style='text-align: center;'>暂无数据</td></tr>");
+            }
+        });
+    }
+</script>
+</body>
+</html>

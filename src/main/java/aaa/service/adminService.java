@@ -44,7 +44,6 @@ public class adminService {
         return new paging((int) Math.ceil((double)total/(double)rows),adminList);
     }
 
-
     /**
      * 修改管理员状态
      * @param admin
@@ -73,6 +72,37 @@ public class adminService {
     @Transactional
     public int update(admin admin){
         return adminDao.update(admin);
+    }
+
+    /**
+     * 通过管理员账号获取管理员
+     * @param adminAccount
+     * @return
+     */
+    public admin find_adminByadminAccount(String adminAccount)
+    {
+       return adminDao.find_adminByadminAccount(adminAccount);
+    }
+
+    /**
+     * 通过管理员编号查询管理员
+     * @param adminId
+     * @return
+     */
+    public admin find_adminByadminId(String adminId)
+    {
+        return adminDao.find_adminByadminId(adminId);
+    }
+
+    /**
+     * 修改密码
+     * @param adminAccount
+     * @param adminPassword
+     * @return
+     */
+    @Transactional
+    public int updateAdminPassword(String adminAccount,String adminPassword){
+        return adminDao.updateAdminPassword(adminAccount,adminPassword);
     }
 
 }

@@ -15,14 +15,12 @@ public class currentInfo {
     adminService adminService;
 
     public void getCurrentDateAndAdmin(admin admin){
-        System.out.println(admin);
         //当前时间
         Date curremtnDate=new Date();
         admin.setUpdateDate(curremtnDate);
         //当前管理员ID
         String account= SecurityUtils.getSubject().getPrincipal().toString();
         admin curremtnAdmin= adminService.ByAccountQuery(account);
-        System.out.println(curremtnAdmin);
         admin.setCreateadminId(curremtnAdmin.getAdminId());
     }
 

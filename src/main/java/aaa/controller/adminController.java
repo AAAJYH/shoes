@@ -33,7 +33,11 @@ public class adminController {
      */
     @RequestMapping("/loginIndex")
     public String loginIndex(){
-        return "login";
+        if(SecurityUtils.getSubject().getPrincipal()!=null){
+            return "index";
+        }else{
+            return "login";
+        }
     }
 
     /**
@@ -42,19 +46,19 @@ public class adminController {
      */
     @RequestMapping("/login")
     public String login(HttpServletRequest request){
-        Object exception=request.getAttribute("shiroLoginFailure");
-        String msg="";
-        if(null!=exception){
-            if(UnknownAccountException.class.getName().equals(exception.toString())){
-                msg="账号错误或账号被禁用";
-            }else if(IncorrectCredentialsException.class.getName().equals(exception.toString())){
-                msg="密码不正确";
-            }else{
-                msg="登陆失败，请前检查账户和密码!";
+            Object exception=request.getAttribute("shiroLoginFailure");
+            String msg="";
+            if(null!=exception){
+                if(UnknownAccountException.class.getName().equals(exception.toString())){
+                    msg="账号错误或账号被禁用";
+                }else if(IncorrectCredentialsException.class.getName().equals(exception.toString())){
+                    msg="密码不正确";
+                }else{
+                    msg="登陆失败，请前检查账户和密码!";
+                }
             }
-        }
-        request.getSession().setAttribute("msg",msg);
-        return "login";
+            request.getSession().setAttribute("msg",msg);
+            return "login";
     }
 
     /**
@@ -97,7 +101,6 @@ public class adminController {
     @ResponseBody
     public paging<admin> PageQuery(Integer page,Integer rows,String stateId,String condition){
         paging<admin> paging=adminService.PageQuery(page, rows, stateId, condition);
-        System.out.println(paging.getRows());
         return paging;
     }
 
@@ -112,6 +115,17 @@ public class adminController {
         //设置修改时间和管理员
         currentInfo.getCurrentDateAndAdmin(admin);
         return adminService.ByAdminIdUpdateState(admin);
+    }
+
+    @RequestMapping("/checkAccount")
+    @ResponseBody
+    public boolean checkAccount(String account){
+        admin admin=adminService.ByAccountQuery(account);
+        if(admin==null){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     /**
@@ -134,12 +148,31 @@ public class adminController {
      * @param admin
      * @return
              */
-      @RequestMapping("/update")
-      @ResponseBody
+    @RequestMapping("/update")
+    @ResponseBody
     public int update(admin admin){
        //设置修改时间和管理员
         currentInfo.getCurrentDateAndAdmin(admin);
         return adminService.update(admin);
+    }
+
+    /**
+     * 修改密码
+     * @param oldPwd
+     * @param newPwd
+     * @return
+     */
+    @RequestMapping("/updateAdminPassword")
+    @ResponseBody
+    public String updateAdminPassword(String oldPwd,String newPwd){
+        String adminAccount=SecurityUtils.getSubject().getPrincipal().toString();
+        admin admin=adminService.ByAccountQuery(adminAccount);
+        if(admin.getAdminPassword().equals(oldPwd)){
+            adminService.updateAdminPassword(adminAccount,newPwd);
+            return "修改成功，请重新登陆";
+        }else{
+            return "原密码不正确！";
+        }
     }
 
 }

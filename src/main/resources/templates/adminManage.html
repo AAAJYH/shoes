@@ -59,6 +59,7 @@
                         <span class="tpl-header-list-user-ico"></span>👨
                     </a>
                     <ul class="am-dropdown-content">
+                        <li id="updatePwd"><a href="#"><span class="am-icon-cog"></span> 修改密码</a></li>
                         <li><a href="/adminController/Exit"><span class="am-icon-power-off"></span> 退出</a></li>
                     </ul>
                 </li>
@@ -181,7 +182,7 @@
             <div class="tpl-portlet-components">
                 <div class="tpl-block">
                     <div class="am-g">
-                        <div class="am-u-sm-12 am-u-md-6">
+                        <div class="am-u-sm-12 am-u-md-3">
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
                                     <button type="button" class="am-btn am-btn-default am-btn-success add"><span class="am-icon-plus"></span> 新增</button>
@@ -281,7 +282,7 @@
             padding:0px;
         }
     </style>
-    <div id="hint" style="">
+    <div id="hint">
         <script>
             <!--动态设置提示框的未知-->
             $(function(){
@@ -293,6 +294,36 @@
             });
         </script>
     </div>
+
+    <!--修改密码-->
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="consumption_model">
+        <div class="am-modal-dialog">
+            <div class="am-modal-bd">
+                <form class="am-form am-form-horizontal" id="consumption_form">
+                    <fieldset>
+                        <legend>修改密码</legend>
+                        <div  class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">原密码</label>
+                            <div class="am-u-sm-9">
+                             <input name='oldPwd' type="password" id="oldPwd" placeholder="请输入">
+                             </div>
+                           </div>
+                       <div class="am-form-group">
+                       <label class="am-u-sm-3 am-form-label">新密码</label>
+                        <div class="am-u-sm-9">
+                        <input name='newPwd' type="password" id="newPwd" placeholder="请输入6-16位数密码（数字加字母）">
+                       </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" id="subUpdatePwd" data-am-modal-confirm>提交</span>
+            </div>
+        </div>
+    </div>
+
 
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/amazeui.min.js"></script>
@@ -400,7 +431,26 @@
                     //正则表达式
                     var uPattern = /^[a-zA-Z0-9_-]{4,16}$/; //账号：字母，数字，下划线，减号
                     var pPattern=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/; //密码：6-16位字母加数字
-                    if(!uPattern.test(account)){
+                    //判断账户是否存在
+                    var rs=false;
+                    $.ajax({
+                        url:"/adminController/checkAccount",
+                        type:'post',
+                        async:false,
+                        data:{
+                            account:account,
+                        },
+                        dataType:'text',
+                        success:function(data) {
+                            if(data=="true"){
+                                rs=true;
+                            }
+                        }
+                    });
+                    if(rs){
+                        alert("账号已存在，请更改！");
+                        return;
+                    }else if(!uPattern.test(account)){
                         alert("请输入4-16位数账号（字母，数字，下划线，减号）！");
                         return;
                     }else if(!pPattern.test(pwd)){
@@ -434,8 +484,7 @@
                             //提示框追加信息，并显示
                             prompt(rs);
                             //关闭表单
-                            $('#my_alert').css("display","none");
-                            $(".am-dimmer").css("display","none");
+                            $('#my_alert').model("close");
                         }
                     });
                 } else if(url=="/adminController/update"){ //修改
@@ -471,14 +520,13 @@
                             $(".am-dimmer").css("display","none");
                         }
                     });
-                    $("#cancel").click(function(){
-                        //关闭表单
-                        $('#my_alert').css("display","none");
-                        $(".am-dimmer").css("display","none");
-                        $(".am-active").css("display","none");
-                    });
                 }
                 return false;
+            });
+            $("#cancel").click(function(){
+                //关闭表单
+                $('#my_alert').css("display","none");
+                $(".am-dimmer").css("display","none");
             });
         }
 
@@ -672,6 +720,62 @@
                 stateId="";
             }
             loadData(1,rows,stateId,condition);
+        });
+
+        /**
+         *  清空修改密码form表单，并关闭dialog
+         * */
+        function clearFormCloseDialog(){
+            //清空表单
+            $("#oldPwd").val("");
+            $("#newPwd").val("");
+            //关闭dialog
+            $("#consumption_model").modal('close');
+        }
+
+
+        /**
+         * 修改密码点击事件
+         */
+        $("#updatePwd").click(function(){
+            $('#consumption_model').modal({
+                relatedTarget: this,
+               onCancel: function(e) {
+                   clearFormCloseDialog();
+                }
+            });
+        });
+
+        /**
+         * 修改密码
+         */
+        $("#subUpdatePwd").click(function(){
+            var pPattern=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/; //密码：6-16位字母加数字
+            var oldPwd=$("#oldPwd").val();
+            var newPwd=$("#newPwd").val();
+            if(oldPwd==""){
+                alert("请输入原密码");
+                return false;
+            }else if(!pPattern.test(newPwd)){
+                alert("新密码请输入6-16位字母加数字");
+                return false;
+            }
+            $.ajax({
+               url:'/adminController/updateAdminPassword',
+               type:'post',
+               data:{
+                   oldPwd:oldPwd,
+                   newPwd:newPwd
+               },
+               dataType:'text',
+               success:function(data){
+                    alert(data);
+                    if(data=="修改成功，请重新登陆"){
+                        window.location.href="/adminController/Exit";
+                    }
+               }
+            });
+           return false;
         });
 
     });
