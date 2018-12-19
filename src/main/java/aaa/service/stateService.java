@@ -23,4 +23,13 @@ public class stateService
     {
         return statedao.find_stateBystateId(stateId);
     }
+
+    /**
+     * 查询全部状态
+     * @return
+     */
+    public List<state> queryAll(){
+        return  stateDao.queryAll();
+    }
+
 }

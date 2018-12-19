@@ -1,5 +1,7 @@
 package aaa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
@@ -16,5 +18,8 @@ public class admin {
     private String adminPassword; //管理员密码
     private String createadminId; //创建管理员id
     private String adminAuthority; //管理员权限（写固定值）
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date updateDate; //修改日期
+    private String stateId; //状态id（正常/删除）
+
 }
