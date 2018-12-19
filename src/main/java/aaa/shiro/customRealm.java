@@ -26,7 +26,8 @@ public class customRealm extends AuthorizingRealm{
         admin admin= adminService.ByAccountQuery(Account);
         String permission =admin.getAdminAuthority();
         SimpleAuthorizationInfo simpleAuthorizationInfo=new SimpleAuthorizationInfo();
-        simpleAuthorizationInfo.addStringPermission(permission);
+        simpleAuthorizationInfo.addRole(permission);
+        System.out.println(permission);
         return simpleAuthorizationInfo;
     }
 

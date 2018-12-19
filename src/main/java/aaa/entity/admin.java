@@ -21,5 +21,6 @@ public class admin {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date updateDate; //修改日期
     private String stateId; //状态id（正常/删除）
+    private String adminPhone; //手机号
 
 }

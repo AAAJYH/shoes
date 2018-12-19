@@ -27,7 +27,7 @@ public interface adminDao {
      * @return
      */
     @Select("<script>" +
-            "select admin.adminId,a2.adminName admin2Name,admin.adminName adminName,admin.adminAccount,admin.createadminId,admin.updateDate,admin.adminAuthority,state.stateName from admin,state,admin a2 where admin.stateId=state.stateId and a2.adminId=admin.createadminId " +
+            "select admin.adminId,a2.adminName admin2Name,admin.adminName adminName,admin.adminPhone adminPhone,admin.adminAccount,admin.createadminId,admin.updateDate,admin.adminAuthority,state.stateName from admin,state,admin a2 where admin.stateId=state.stateId and a2.adminId=admin.createadminId " +
             "<if test=\"stateId!=''\">and admin.stateId=#{stateId}</if> " +
             "<if test=\"condition!=''\">and (admin.adminName like concat('%',#{condition},'%') or admin.adminAccount like concat('%',#{condition},'%') )</if>" +
             "order by updateDate desc</script>")
@@ -46,7 +46,7 @@ public interface adminDao {
      * @param admin
      * @return
      */
-    @Insert("insert into admin(adminId,adminName,adminAccount,adminPassword,createadminId,stateId,adminAuthority,updateDate) values(#{a.adminId},#{a.adminName},#{a.adminAccount},#{a.adminPassword},#{a.createadminId},#{a.stateId},#{a.adminAuthority},#{a.updateDate})")
+    @Insert("insert into admin(adminId,adminName,adminAccount,adminPassword,createadminId,stateId,adminAuthority,updateDate,adminPhone) values(#{a.adminId},#{a.adminName},#{a.adminAccount},#{a.adminPassword},#{a.createadminId},#{a.stateId},#{a.adminAuthority},#{a.updateDate},#{a.adminPhone})")
     public int add(@Param("a") admin admin);
 
     /**
@@ -54,7 +54,7 @@ public interface adminDao {
      * @param admin
      * @return
      */
-    @Update("update admin set adminAuthority=#{a.adminAuthority},adminName=#{a.adminName},updateDate=#{a.updateDate},createadminId=#{a.createadminId} where adminId=#{a.adminId}")
+    @Update("update admin set adminName=#{a.adminName},updateDate=#{a.updateDate},createadminId=#{a.createadminId},adminPhone=#{a.adminPhone} where adminId=#{a.adminId}")
     public int update(@Param("a") admin admin);
 
 

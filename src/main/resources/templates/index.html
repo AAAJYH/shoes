@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Amaze UI Admin index Examples</title>
-    <meta name="description" content="这是一个 index 页面">
+    <title>首页</title>
+    <meta name="description" content="首页">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -21,7 +21,6 @@
 </head>
 
 <body data-type="index">
-
 
     <!--顶部-->
     <header class="am-topbar am-topbar-inverse admin-header">
@@ -50,6 +49,7 @@
                         <span class="tpl-header-list-user-ico"></span>👨
                     </a>
                     <ul class="am-dropdown-content">
+                        <li id="updatePwd"><a href="#"><span class="am-icon-cog"></span> 修改密码</a></li>
                         <li><a href="/adminController/Exit"><span class="am-icon-power-off"></span> 退出</a></li>
                     </ul>
                 </li>
@@ -123,7 +123,6 @@
 
             <ol class="am-breadcrumb">
                 <li><a href="#" class="am-icon-home">首页</a></li>
-                <li><a href="#">分类</a></li>
                 <li class="am-active">内容</li>
             </ol>
 
@@ -436,120 +435,192 @@
                                     <div class="portlet-input input-small input-inline">
                                         <div class="input-icon right">
                                             <i class="am-icon-search"></i>
-                                            <input type="text" class="form-control form-control-solid" placeholder="客户姓名 . . .">
+                                            <input type="text" id="search2" class="form-control form-control-solid" placeholder="客户姓名 . . .">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="tpl-scrollable">
-                            <div class="number-stats">
-                                <div class="stat-number am-fl am-u-md-6">
-                                    <div class="title am-text-right"> Total </div>
-                                    <div class="number am-text-right am-text-warning"> 2460 </div>
-                                </div>
-                                <div class="stat-number am-fr am-u-md-6">
-                                    <div class="title"> Total </div>
-                                    <div class="number am-text-success"> 2460 </div>
-                                </div>
-                            </div>
+                            <!--<div class="number-stats">-->
+                            <!--<div class="stat-number am-fl am-u-md-6">-->
+                            <!--<div class="title am-text-right">总金额 </div>-->
+                            <!--<div class="number am-text-right am-text-warning"> 2460 </div>-->
+                            <!--</div>-->
+                            <!--<div class="stat-number am-fr am-u-md-6">-->
+                            <!--<div class="title">总次数 </div>-->
+                            <!--<div class="number am-text-success"> 2460 </div>-->
+                            <!--</div>-->
+                            <!--</div>-->
 
                             <table class="am-table tpl-table">
                                 <thead>
                                 <tr class="tpl-table-uppercase">
-                                    <th>人员</th>
-                                    <th>余额</th>
-                                    <th>次数</th>
-                                    <th>效率</th>
+                                    <th>客户姓名</th>
+                                    <th>消费总金额</th>
+                                    <th>剩余金额</th>
+                                    <th>消费次数</th>
+                                    <th>消费占比</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="/assets/img/user01.png" alt="" class="user-pic">
-                                        <a class="user-name" href="###">禁言小张</a>
-                                    </td>
-                                    <td>￥3213</td>
-                                    <td>65</td>
-                                    <td class="font-green bold">26%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="/assets/img/user02.png" alt="" class="user-pic">
-                                        <a class="user-name" href="###">Alex.</a>
-                                    </td>
-                                    <td>￥2635</td>
-                                    <td>52</td>
-                                    <td class="font-green bold">32%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="/assets/img/user03.png" alt="" class="user-pic">
-                                        <a class="user-name" href="###">Tinker404</a>
-                                    </td>
-                                    <td>￥1267</td>
-                                    <td>65</td>
-                                    <td class="font-green bold">51%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="/assets/img/user05.png" alt="" class="user-pic">
-                                        <a class="user-name" href="###">Yves</a>
-                                    </td>
-                                    <td>￥3907</td>
-                                    <td>65</td>
-                                    <td class="font-green bold">12%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="/assets/img/user06.png" alt="" class="user-pic">
-                                        <a class="user-name" href="###">小黄鸡</a>
-                                    </td>
-                                    <td>￥900</td>
-                                    <td>65</td>
-                                    <td class="font-green bold">10%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="/assets/img/user06.png" alt="" class="user-pic">
-                                        <a class="user-name" href="###">小黄鸡</a>
-                                    </td>
-                                    <td>￥900</td>
-                                    <td>65</td>
-                                    <td class="font-green bold">10%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="/assets/img/user06.png" alt="" class="user-pic">
-                                        <a class="user-name" href="###">小黄鸡</a>
-                                    </td>
-                                    <td>￥900</td>
-                                    <td>65</td>
-                                    <td class="font-green bold">10%</td>
-                                </tr>
-
+                                <tbody id="content2">
+                                <!--<tr>-->
+                                <!--<td>-->
+                                <!--<i class="am-icon-male"></i>-->
+                                <!--<a class="user-name" href="###">禁言小张</a>-->
+                                <!--</td>-->
+                                <!--<td>￥3213</td>-->
+                                <!--<td>0</td>-->
+                                <!--<td>65</td>-->
+                                <!--<td class="font-green bold">&nbsp;&nbsp;&nbsp;26%</td>-->
+                                <!--</tr>-->
                                 </tbody>
                             </table>
-                            <div class="am-cf" >
-
-                                <div class="am-fr">
-                                    <ul class="am-pagination tpl-pagination" >
-                                        <li class="am-disabled" ><a href="#">«</a></li>
-                                        <li class="am-active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">»</a></li>
-                                    </ul>
-                                </div>
+                        </div>
+                        <div class="am-cf" >
+                            <div class="am-fr" >
+                                <ul class="am-pagination tpl-pagination" id="paging_toolbar2">
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+                <script>
+                    var page2=1;
+                    var rows2=9;
+                    var customName2="";
+                    $(function(){
+
+                        loadExpenseDate(page2,rows2,"");
+
+                        /**
+                         * 加载充值数据
+                         * */
+                        function loadExpenseDate(page2,rows2,clientName2){
+                            $.ajax({
+                                url:'/expense_recordController/expenseStatistics',
+                                type:'post',
+                                asyns:false,
+                                data:{
+                                    page:page2,
+                                    rows:rows2,
+                                    customName:customName2
+                                },
+                                dataType:'json',
+                                success:function(data){
+                                    var total=data.total;
+                                    var rows=data.rows;
+                                    $("#content2").empty();
+                                    var myDate=new Date();
+                                    var expenseSumMoney=0;
+                                    $.ajax({
+                                        url:'/expense_recordController/currentDayExpense',
+                                        type:'post',
+                                        data:{
+                                            date:""
+                                        },
+                                        async:false,
+                                        dateType:'text',
+                                        success:function(data){
+                                            expenseSumMoney=data;
+                                        }
+                                    });
+                                    for(var i=0;i<rows.length;i++){
+                                        $("#content2").append("<tr>\n" +
+                                            "                                        <td>\n" +
+                                            "                                            <i class=\"am-icon-male\"></i>\n" +
+                                            "                                            <a class=\"user-name\" href=\"###\">"+rows[i].customerinfoName+"</a>\n" +
+                                            "                                        </td>\n" +
+                                            "                                        <td>￥"+rows[i].expenseMoney+"</td>\n" +
+                                            "                                        <td>"+rows[i].balance+"</td>\n" +
+                                            "                                        <td>"+rows[i].expenseCount+"</td>\n" +
+                                            "                                        <td class=\"font-green bold\">&nbsp;"+(rows[i].expenseMoney/expenseSumMoney*100).toFixed(2)+"%</td>\n" +
+                                            "                                    </tr>");
+                                    }
+                                    //初始化分页栏
+                                    $("#paging_toolbar2").empty();
+                                    var pageNumber=Math.ceil(total/rows1);
+                                    $("#paging_toolbar2").append("<li id=\"prev2\"><a href=\"javascript:;\">«</a></li>");
+                                    for(var i=1;i<=Math.ceil(total/rows1);i++){
+                                        if(page2!=i){
+                                            $("#paging_toolbar2").append("<li class='page'><a href=\"javascript:;\">"+i+"</a></li>");
+                                        }else{
+                                            $("#paging_toolbar2").append("<li class=\"am-active page\"><a href=\"javascript:;\">"+i+"</a></li>");
+                                        }
+                                    }
+                                    $("#paging_toolbar2").append("<li id='next2'><a href=\"javascript:;\">»</a></li>");
+
+                                    /**
+                                     * 上一页
+                                     * */
+                                    $("#prev2").click(function(){
+                                        if(page2-1==0){
+                                            page2=pageNumber;
+                                        }else{
+                                            page2--;
+                                        }
+                                        loadExpenseDate(page1,rows1,customName1);
+                                    });
+
+                                    /**
+                                     * 下一页
+                                     * */
+                                    $("#next2").click(function(){
+                                        if(page2+1>pageNumber){
+                                            page2=1;
+                                        }else{
+                                            page2++;
+                                        }
+                                        loadExpenseDate(page2,rows2,customName2);
+                                    });
+
+                                }
+                            });
+
+                        }
+
+                        /**
+                         * 充值统计：输入事件
+                         */
+                        $("#search2").keyup(function(){
+                            customName2=$("#search2").val();
+                            loadExpenseDate(page2,rows2,customName2);
+                        });
+
+                    });
+                </script>
             </div>
         </div>
 
+    </div>
+
+    <!--修改密码-->
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="consumption_model">
+        <div class="am-modal-dialog">
+            <div class="am-modal-bd">
+                <form class="am-form am-form-horizontal" id="consumption_form">
+                    <fieldset>
+                        <legend>修改密码</legend>
+                        <div  class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">原密码</label>
+                            <div class="am-u-sm-9">
+                                <input name='oldPwd' type="password" id="oldPwd" placeholder="请输入">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">新密码</label>
+                            <div class="am-u-sm-9">
+                                <input name='newPwd' type="password" id="newPwd" placeholder="请输入6-16位数密码（数字加字母）">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" id="subUpdatePwd" data-am-modal-confirm>提交</span>
+            </div>
+        </div>
     </div>
 
     <script src="/assets/js/jquery.min.js"></script>
@@ -558,3 +629,62 @@
 </body>
 
 </html>
+<script>
+    $(function(){
+        /**
+         *  清空修改密码form表单，并关闭dialog
+         * */
+        function clearFormCloseDialog(){
+            //清空表单
+            $("#oldPwd").val("");
+            $("#newPwd").val("");
+            //关闭dialog
+            $("#consumption_model").modal('close');
+        }
+
+
+        /**
+         * 修改密码点击事件
+         */
+        $("#updatePwd").click(function(){
+            $('#consumption_model').modal({
+                relatedTarget: this,
+                onCancel: function(e) {
+                    clearFormCloseDialog();
+                }
+            });
+        });
+
+        /**
+         * 修改密码
+         */
+        $("#subUpdatePwd").click(function(){
+            var pPattern=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/; //密码：6-16位字母加数字
+            var oldPwd=$("#oldPwd").val();
+            var newPwd=$("#newPwd").val();
+            if(oldPwd==""){
+                alert("请输入原密码");
+                return false;
+            }else if(!pPattern.test(newPwd)){
+                alert("新密码请输入6-16位字母加数字");
+                return false;
+            }
+            $.ajax({
+                url:'/adminController/updateAdminPassword',
+                type:'post',
+                data:{
+                    oldPwd:oldPwd,
+                    newPwd:newPwd
+                },
+                dataType:'text',
+                success:function(data){
+                    alert(data);
+                    if(data=="修改成功，请重新登陆"){
+                        window.location.href="/adminController/Exit";
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>

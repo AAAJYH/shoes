@@ -4,6 +4,7 @@ import aaa.dao.adminDao;
 import aaa.dao.customer_infoDao;
 import aaa.dao.expense_recordDao;
 import aaa.entity.expense_record;
+import aaa.entity.paging;
 import aaa.entity.service;
 import aaa.util.Encryption;
 import com.github.pagehelper.PageHelper;
@@ -87,6 +88,19 @@ public class expense_recordService
         return expense_recorddao.currentDayExpense(date);
     }
 
+    /**
+     * 消费统计
+     * @param page
+     * @param rows
+     * @param customName
+     * @return
+     */
+    public paging<Map<String,Object>> expenseStatistics(Integer page,Integer rows,String customName){
+        Integer total=expense_recorddao.expenseStatistics(customName).size();
+        PageHelper.startPage(page,rows);
+        List<Map<String,Object>> mapList=expense_recorddao.expenseStatistics(customName);
+        return new paging<Map<String,Object>>(total,mapList);
+    }
 
 
 }

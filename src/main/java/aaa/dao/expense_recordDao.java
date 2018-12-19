@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface expense_recordDao
@@ -35,5 +36,15 @@ public interface expense_recordDao
      */
     @Select("<script>select * from expense_record <if test=\"date!=''\">where date_format(updateDate,\"%Y-%m-%d\")=#{date}</if> </script>")
     public List<expense_record> currentDayExpense(@Param("date") String date);
+
+    /**
+     * 消费统计
+     * @param customName
+     * @return
+     */
+    @Select("<script>select c.customerinfoName customerinfoName,sum(e.expenseMoney) expenseMoney," +
+            "avg(c.balance) balance,count(e.expenseMoney) expenseCount from customer_info c,expense_record e " +
+            "where c.customerinfoId=e.customerinfoId <if test=\"customName!=''\">and c.customerinfoName like concat('%',#{customName},'%')</if> group by c.customerinfoName</script>")
+    public List<Map<String,Object>> expenseStatistics(@Param("customName") String customName);
 
 }

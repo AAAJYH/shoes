@@ -1,6 +1,7 @@
 package aaa.controller;
 
 import aaa.entity.expense_record;
+import aaa.entity.paging;
 import aaa.service.expense_recordService;
 import aaa.util.doubleSum;
 import org.springframework.stereotype.Controller;
@@ -14,13 +15,13 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("expense_recordController")
-public class expense_recordController
-{
+public class expense_recordController {
     @Resource
     private expense_recordService expense_recordservice;
 
     /**
      * 查询所有消费记录或根据键值和时间查询
+     *
      * @param pageIndex
      * @param keyValue
      * @param updateDate
@@ -28,24 +29,37 @@ public class expense_recordController
      */
     @ResponseBody
     @RequestMapping("find_expense_recordBykeyValueorupdateDate")
-    public Map<String,Object> find_expense_recordBykeyValueorupdateDate(Integer pageIndex, String keyValue, String updateDate)
-    {
-        return expense_recordservice.find_expense_recordBykeyValueorupdateDate(pageIndex,10,updateDate,keyValue);
+    public Map<String, Object> find_expense_recordBykeyValueorupdateDate(Integer pageIndex, String keyValue, String updateDate) {
+        return expense_recordservice.find_expense_recordBykeyValueorupdateDate(pageIndex, 10, updateDate, keyValue);
     }
 
     /**
      * 消费金额
+     *
      * @return
      */
     @RequestMapping("/currentDayExpense")
     @ResponseBody
-    public double currentDayExpense(String date){
-        double d=0.0;
-        List<expense_record> expense_recordList=expense_recordservice.currentDayExpense(date);
-        for (expense_record e:expense_recordList) {
-            d= doubleSum.sum(d,e.getExpenseMoney());
+    public double currentDayExpense(String date) {
+        double d = 0.0;
+        List<expense_record> expense_recordList = expense_recordservice.currentDayExpense(date);
+        for (expense_record e : expense_recordList) {
+            d = doubleSum.sum(d, e.getExpenseMoney());
         }
         return d;
+    }
+
+    /**
+     * 消费统计
+     * @param page 第几页
+     * @param rows 每页显示的数量
+     * @param customName 客户名称
+     * @return
+     */
+    @RequestMapping("/expenseStatistics")
+    @ResponseBody
+    public paging<Map<String, Object>> expenseStatistics(Integer page, Integer rows, String customName) {
+        return expense_recordservice.expenseStatistics(page,rows,customName);
     }
 
 }

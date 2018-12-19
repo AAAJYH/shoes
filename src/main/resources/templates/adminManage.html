@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Amaze UI Admin index Examples</title>
-    <meta name="description" content="这是一个 index 页面">
+    <title>账号管理</title>
+    <meta name="description" content="账号管理">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -98,75 +98,29 @@
                             </li>
                         </ul>
                     </li>
-
-                    <li class="tpl-left-nav-item">
-                        <a href="chart.html" class="nav-link tpl-left-nav-link-list">
-                            <i class="am-icon-bar-chart"></i>
-                            <span>数据表</span>
-                            <i class="tpl-left-nav-content tpl-badge-danger">12</i>
-                        </a>
-
-                    </li>
-
                     <li class="tpl-left-nav-item">
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-table"></i>
-                            <span>表格</span>
+                            <span>客户管理</span>
                             <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="table-font-list.html">
+                                <!-- 打开状态 a 标签添加 active 即可   -->
+                                <a href="/show_customer_info.html" class="active">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>文字表格</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                    <span>客户信息</span>
                                 </a>
-
-                                <a href="table-images-list.html">
+                                <a href="/show_recharge_record.html">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>图片表格</span>
-                                    <i class="tpl-left-nav-content tpl-badge-success">18</i>
-
-                                    <a href="form-news.html">
-                                        <i class="am-icon-angle-right"></i>
-                                        <span>消息列表</span>
-                                        <i class="tpl-left-nav-content tpl-badge-primary">5</i>
-                                        <a href="form-news-list.html">
-                                            <i class="am-icon-angle-right"></i>
-                                            <span>文字列表</span>
-                                        </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="tpl-left-nav-item">
-                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
-                            <i class="am-icon-wpforms"></i>
-                            <span>表单</span>
-                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
-                        </a>
-                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
-                            <li>
-                                <a href="form-amazeui.html">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>Amaze UI 表单</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                    <span>充值记录</span>
                                 </a>
-
-                                <a href="form-line.html">
+                                <a href="/show_expense_record.html">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>线条表单</span>
+                                    <span>消费记录</span>
                                 </a>
                             </li>
                         </ul>
-                    </li>
-
-                    <li class="tpl-left-nav-item">
-                        <a href="login.html" class="nav-link tpl-left-nav-link-list">
-                            <i class="am-icon-key"></i>
-                            <span>登录</span>
-
-                        </a>
                     </li>
 
                 </ul>
@@ -175,18 +129,30 @@
 
         <div class="tpl-content-wrapper">
             <ol class="am-breadcrumb">
-                <li><a href="#" class="am-icon-home">首页</a></li>
-                <li><a href="#">Amaze UI CSS</a></li>
-                <li class="am-active">文字列表</li>
+                <li><a href="javascript:;" class="am-icon-home">管理员</a></li>
+                <li><a href="javascript:;">账户管理</a></li>
+                <li class="am-active">内容</li>
             </ol>
             <div class="tpl-portlet-components">
                 <div class="tpl-block">
                     <div class="am-g">
                         <div class="am-u-sm-12 am-u-md-3">
                             <div class="am-btn-toolbar">
+                                <shiro:hasAnyRoles name = "超级管理员">
                                 <div class="am-btn-group am-btn-group-xs">
                                     <button type="button" class="am-btn am-btn-default am-btn-success add"><span class="am-icon-plus"></span> 新增</button>
                                 </div>
+                            </shiro:hasAnyRoles>
+                                <shiro:lacksRole name = "超级管理员">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <button type="button" class="am-btn am-btn-default am-btn-success noadd"><span class="am-icon-plus"></span> 新增</button>
+                                        <script>
+                                            $(".noadd").click(function(){
+                                               alert("抱歉，你没有新增权限");
+                                            });
+                                        </script>
+                                    </div>
+                                </shiro:lacksRole>
                             </div>
                         </div>
                         <div class="am-u-sm-12 am-u-md-3">
@@ -215,6 +181,7 @@
                                         <th class="table-id">ID</th>
                                         <th class="table-title">姓名</th>
                                         <th class="table-type">账号</th>
+                                        <th >联系电话</th>
                                         <th class="table-date am-hide-sm-only">权限</th>
                                         <th class="table-date am-hide-sm-only">状态</th>
                                         <th class="table-date am-hide-sm-only">修改人</th>
@@ -223,37 +190,12 @@
                                     </tr>
                                     </thead>
                                     <tbody id="content">
-                                    <!--<tr>-->
-                                        <!--<td><input type="checkbox"></td>-->
-                                        <!--<td>1</td>-->
-                                        <!--<td><a href="#">Business management</a></td>-->
-                                        <!--<td>default</td>-->
-                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
-                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
-                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
-                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
-                                        <!--<td>-->
-                                            <!--<div class="am-btn-toolbar">-->
-                                                <!--<div class="am-btn-group am-btn-group-xs">-->
-                                                    <!--<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>-->
-                                                    <!--<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                        <!--</td>-->
-                                    <!--</tr>-->
                                     </tbody>
                                 </table>
                                 <div class="am-cf">
 
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination" id="paging_toolbar">
-                                            <li class="am-disabled" id="prev"><a href="#">«</a></li>
-                                            <li class="am-active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">»</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -341,7 +283,7 @@
     var url="";
 
     //表单信息
-    function formInfo(adminId,adminName,adminAuthority){
+    function formInfo(adminId,adminName,adminAuthority,adminPhone){
         var str="<input type='hidden' id='adminId' name='adminId' value='"+adminId+"'><div style='margin-left:8%;' class=\"am-g tpl-amazeui-form\"><div class=\"am-u-sm-12 am-u-md-9\"><form class=\"am-form am-form-horizontal\">\n" +
             "                            <div id='accountDiv' class=\"am-form-group\">\n" +
             "                                <label for=\"user-name\" class=\"am-u-sm-3 am-form-label\">账号</label>\n" +
@@ -359,6 +301,12 @@
             "                                <label for=\"user-name\" class=\"am-u-sm-3 am-form-label\">姓名</label>\n" +
             "                                <div class=\"am-u-sm-9\">\n" +
             "                                    <input value='"+adminName+"' name='adminName' type=\"text\" id=\"adminName\" placeholder=\"请输入中文名称或英文名称\">\n" +
+            "                                </div>\n" +
+            "                            </div>" +
+            "                            <div class=\"am-form-group\">\n" +
+            "                                <label for=\"user-name\" class=\"am-u-sm-3 am-form-label\">手机号</label>\n" +
+            "                                <div class=\"am-u-sm-9\">\n" +
+            "                                    <input value='"+adminPhone+"' name='adminPhone' type=\"text\" id=\"adminPhone\" placeholder=\"请输入正确的手机号\">\n" +
             "                                </div>\n" +
             "                            </div>" +
             "<div class=\"am-form-group\">\n" +
@@ -425,6 +373,7 @@
                 var username = /^[\u4E00-\u9FA5A-Za-z]+$/; //姓名：中文和英文
                 var adminAuthority=$("#adminAuthority").val();
                 var adminName=$("#adminName").val();
+                var adminPhone=$("#adminPhone").val();
                 if(url=="/adminController/add"){ //添加
                     var account=$("#account").val();
                     var pwd=$("#password").val();
@@ -449,19 +398,22 @@
                     });
                     if(rs){
                         alert("账号已存在，请更改！");
-                        return;
+                        return false;
                     }else if(!uPattern.test(account)){
                         alert("请输入4-16位数账号（字母，数字，下划线，减号）！");
-                        return;
+                        return false;
                     }else if(!pPattern.test(pwd)){
                         alert("请输入6-16位数密码（数字加字母）！");
-                        return;
+                        return false;
                     }else if(!username.test(adminName)){
                         alert("请输入英文名称或中文！");
-                        return;
-                    }else if(adminAuthority=="请选择"){
+                        return false;
+                    }else if(!(/^1[34578]\d{9}$/.test(adminPhone))){
+                        alert("手机号码有误，请重填");
+                        return false;
+                    } else if(adminAuthority=="请选择"){
                         alert("请选择管理员权限");
-                        return;
+                        return false;
                     }
                     $.ajax({
                         url:url,
@@ -471,7 +423,8 @@
                             adminName:adminName,
                             adminAuthority:adminAuthority,
                             adminAccount:account,
-                            adminPassword:pwd
+                            adminPassword:pwd,
+                            adminPhone:adminPhone
                         },
                         dataType:'text',
                         success:function(data){
@@ -484,17 +437,21 @@
                             //提示框追加信息，并显示
                             prompt(rs);
                             //关闭表单
-                            $('#my_alert').model("close");
+                            $('#my_alert').css("display","none");
+                            $(".am-dimmer").css("display","none");
                         }
                     });
                 } else if(url=="/adminController/update"){ //修改
                     var adminId=$("#adminId").val();
                     if(!username.test(adminName)){
                         alert("请输入中文名或英文名！");
-                        return;
-                    }else if(adminAuthority=="请选择"){
+                        return false;
+                    }else if(!(/^1[34578]\d{9}$/.test(adminPhone))){
+                        alert("手机号码有误，请重填");
+                        return false;
+                    } else if(adminAuthority=="请选择"){
                         alert("请选择管理员权限");
-                        return;
+                        return false;
                     }
                     $.ajax({
                         url:url,
@@ -503,7 +460,8 @@
                         data:{
                             adminId:adminId,
                             adminName:adminName,
-                            adminAuthority:adminAuthority
+                            adminAuthority:adminAuthority,
+                            adminPhone:adminPhone
                         },
                         dataType:'text',
                         success:function(data){
@@ -561,7 +519,8 @@
                            "                                        <td class=\"am-hide-sm-only\">" + lists[i].adminId.substr(0, 8) + "...  </td>\n" +
                            "                                        <td>" + lists[i].adminName + "</td>\n" +
                            "                                        <td>" + lists[i].adminAccount + "</td>\n" +
-                           "                                        <td class=\"am-hide-sm-only\">" + lists[i].adminAuthority + "</td>\n" +
+                          "                                        <td>" + lists[i].adminPhone + "</td>\n" +
+                          "                                        <td class=\"am-hide-sm-only\">" + lists[i].adminAuthority + "</td>\n" +
                            "                                        <td class=\"am-hide-sm-only\">" + lists[i].stateName + "</td>\n" +
                            "                                        <td class=\"am-hide-sm-only\">" + lists[i].admin2Name + "</td>\n" +
                            "                                        <td class=\"am-hide-sm-only\">" + lists[i].updateDate + "</td>\n" +
@@ -585,15 +544,15 @@
                        }
                        $("#content").append(str);
                    }
-
                        /**
                         * 编辑点击事件
                         */
                        $(".edit").click(function(){
                            var adminId=$(this).prev().val();
-                           var adminName=$(this).parent().parent().parent().prev().prev().prev().prev().prev().prev().text();
+                           var adminName=$(this).parent().parent().parent().prev().prev().prev().prev().prev().prev().prev().text();
                            var adminAuthority=$(this).parent().parent().parent().prev().prev().prev().prev().text();
-                           show_alert("编辑管理员信息",formInfo(adminId,adminName,adminAuthority));
+                           var adminPhone=$(this).parent().parent().parent().prev().prev().prev().prev().prev().text();
+                           show_alert("编辑管理员信息",formInfo(adminId,adminName,adminAuthority,adminPhone));
                            $("#accountDiv").css("display","none");
                            $("#pwdDiv").css("display","none");
                            url="/adminController/update";
@@ -602,7 +561,7 @@
 
 
                         $(".add").click(function(){
-                            show_alert("编辑管理员信息",formInfo("","",""));
+                            show_alert("编辑管理员信息",formInfo("","","",""));
                             $("#accountDiv").css("display","block");
                             $("#pwdDiv").css("display","block");
                             url="/adminController/add";

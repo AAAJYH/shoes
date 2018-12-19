@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,22 +24,30 @@
         </a>
     </div>
     <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
     </div>
+
     <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
-    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse" >
+
         <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
             <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
-                    <span class="tpl-header-list-user-nick">禁言小张</span><span class="tpl-header-list-user-ico"><img src="/assets/img/user01.png"></span>
+                        <span class="tpl-header-list-user-nick">
+                            <shiro:user>
+                                <shiro:principal/>
+                            </shiro:user>
+                        </span>
+                    <span class="tpl-header-list-user-ico"></span>👨
                 </a>
                 <ul class="am-dropdown-content">
-                    <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
-                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                    <li id="updatePwd"><a href="#"><span class="am-icon-cog"></span> 修改密码</a></li>
+                    <li><a href="/adminController/Exit"><span class="am-icon-power-off"></span> 退出</a></li>
                 </ul>
             </li>
-            <li><a href="###" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+            <li><a href="/adminController/Exit" class="tpl-header-list-link" style="background:#E1E3EA;"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
         </ul>
     </div>
 </header>
@@ -50,24 +58,33 @@
         </div>
         <div class="tpl-left-nav-list">
             <ul class="tpl-left-nav-menu">
+
                 <li class="tpl-left-nav-item">
-                    <a href="index.html" class="nav-link tpl-left-nav-link-list">
+                    <a href="/adminController/SuccessIndex" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-home"></i>
                         <span>首页</span>
                     </a>
                 </li>
+
                 <li class="tpl-left-nav-item">
-                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-bar-chart"></i>
-                        <span>数据表</span>
-                        <i class="tpl-left-nav-content tpl-badge-danger">
-                            12
-                        </i>
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-user"></i>
+                        <span>管理员</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i> <!--新消息提示-->
                     </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display:none;">
+                        <li>
+                            <a href="/adminController/AdminManageIndex">
+                                <i class="am-icon-angle-right"></i>
+                                <span>账户管理</span>
+                                <i class="tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="tpl-left-nav-item">
                     <!-- 打开状态 a 标签添加 active 即可   -->
-                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-table"></i>
                         <span>客户管理</span>
                         <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
@@ -91,51 +108,16 @@
                         </li>
                     </ul>
                 </li>
-                <li class="tpl-left-nav-item">
-                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-wpforms"></i>
-                        <span>表单</span>
-                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
-                    </a>
-                    <ul class="tpl-left-nav-sub-menu">
-                        <li>
-                            <a href="form-amazeui.html">
-                                <i class="am-icon-angle-right"></i>
-                                <span>Amaze UI 表单</span>
-                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                            </a>
-
-                            <a href="form-line.html">
-                                <i class="am-icon-angle-right"></i>
-                                <span>线条表单</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="tpl-left-nav-item">
-                    <a href="login.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-key"></i>
-                        <span>登录</span>
-
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
     <div class="tpl-content-wrapper">
-        <div class="tpl-content-page-title">客户信息</div>
         <ol class="am-breadcrumb">
             <li><a href="#" class="am-icon-home">首页</a></li>
             <li>客户管理</li>
             <li class="am-active">消费记录</li>
         </ol>
         <div class="tpl-portlet-components">
-            <div class="portlet-title">
-                <div class="caption font-green bold">
-                    <span class="am-icon-code"></span> 消费记录
-                </div>
-            </div>
             <div class="tpl-block">
                 <div class="am-g">
                     <div class="am-u-sm-12 am-u-md-3">
@@ -179,11 +161,95 @@
         </div>
     </div>
 </div>
+<!--修改密码-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="consumption_model1">
+    <div class="am-modal-dialog">
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal" id="consumption_form1">
+                <fieldset>
+                    <legend>修改密码</legend>
+                    <div  class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">原密码</label>
+                        <div class="am-u-sm-9">
+                            <input name='oldPwd' type="password" id="oldPwd" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">新密码</label>
+                        <div class="am-u-sm-9">
+                            <input name='newPwd' type="password" id="newPwd" placeholder="请输入6-16位数密码（数字加字母）">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" id="subUpdatePwd" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/amazeui.min.js"></script>
 <script src="/assets/js/app.js"></script>
 <script>
     $(function(){
+        /**
+         *  清空修改密码form表单，并关闭dialog
+         * */
+        function clearFormCloseDialog(){
+            //清空表单
+            $("#oldPwd").val("");
+            $("#newPwd").val("");
+            //关闭dialog
+            $("#consumption_model1").modal('close');
+        }
+
+
+        /**
+         * 修改密码点击事件
+         */
+        $("#updatePwd").click(function(){
+            $('#consumption_model1').modal({
+                relatedTarget: this,
+                onCancel: function(e) {
+                    clearFormCloseDialog();
+                }
+            });
+        });
+
+        /**
+         * 修改密码
+         */
+        $("#subUpdatePwd").click(function(){
+            var pPattern=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/; //密码：6-16位字母加数字
+            var oldPwd=$("#oldPwd").val();
+            var newPwd=$("#newPwd").val();
+            if(oldPwd==""){
+                alert("请输入原密码");
+                return false;
+            }else if(!pPattern.test(newPwd)){
+                alert("新密码请输入6-16位字母加数字");
+                return false;
+            }
+            $.ajax({
+                url:'/adminController/updateAdminPassword',
+                type:'post',
+                data:{
+                    oldPwd:oldPwd,
+                    newPwd:newPwd
+                },
+                dataType:'text',
+                success:function(data){
+                    alert(data);
+                    if(data=="修改成功，请重新登陆"){
+                        window.location.href="/adminController/Exit";
+                    }
+                }
+            });
+            return false;
+        });
+
         find_expense_recordBykeyValueorupdateDate(1);
     });
     //键值改变时查询客户

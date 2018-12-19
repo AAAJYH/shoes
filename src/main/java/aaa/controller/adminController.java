@@ -136,6 +136,7 @@ public class adminController {
     @RequestMapping("/add")
     @ResponseBody
     public int add(admin admin){
+        System.out.println(admin);
         currentInfo.getCurrentDateAndAdmin(admin);
         //设置状态为正常
         admin.setStateId("66e75647-2b10-4553-a43d-2bb30fa33af7");
