@@ -1,10 +1,11 @@
 package aaa.dao;
 
 import aaa.entity.admin;
+
+import java.util.List;
 import java.util.Map;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface adminDao
@@ -24,7 +25,7 @@ public interface adminDao
      */
     @Select("select * from admin where adminId=#{adminId}")
     public admin find_adminByadminId(@Param("adminId")String adminId);
-    
+
     /**
      * 根据账号查询当前管理员是否存在，并且为正常状态
      * @param Account

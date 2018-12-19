@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Amaze UI Admin index Examples</title>
+  <title>登录页面</title>
   <meta name="description" content="这是一个 index 页面">
   <meta name="keywords" content="index">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,11 +14,9 @@
   <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
   <link rel="stylesheet" href="/assets/css/admin.css"/>
   <link rel="stylesheet" href="/assets/css/app.css"/>
-	<script src="/js/jquery-1.11.0.min.js"></script>
+  <script src="/js/jquery-1.11.0.min.js"></script>
 </head>
-
 <body data-type="login">
-
   <div class="am-g myapp-login">
 	<div class="myapp-login-logo-block  tpl-login-max">
 		<div class="myapp-login-logo-text">
@@ -26,7 +24,6 @@
 				后台管理<span> 登陆</span> <i class="am-icon-skyatlas"></i>
 			</div>
 		</div>
-
 		<div class="login-font">
 			<i th:if="${session.msg==null}">Log In </i>
 			<i th:if="${session.msg!=null}" th:text="${session.msg}" style="color:red;font-weight:bold;"></i>
@@ -44,10 +41,7 @@
 		</div>
 	</div>
 </div>
-
-
 </body>
-
 </html>
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/amazeui.min.js"></script>

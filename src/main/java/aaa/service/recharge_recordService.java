@@ -2,9 +2,12 @@ package aaa.service;
 
 import aaa.dao.customer_infoDao;
 import aaa.dao.recharge_recordDao;
+import aaa.entity.admin;
+import aaa.entity.customer_info;
 import aaa.entity.recharge_record;
 import aaa.util.Encryption;
 import com.github.pagehelper.PageHelper;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +38,7 @@ public class recharge_recordService
     {
         recharge_record.setRechargeRecordId(Encryption.getUUID());
         recharge_record.setUpdateDate(new Date());
+        recharge_record.setStateId("66e75647-2b10-4553-a43d-2bb30fa33af7");
         if(0<recharge_recorddao.insert_recharge_record(recharge_record))
             return true;
         else
@@ -77,5 +81,78 @@ public class recharge_recordService
         else
             map.put("result",false);
         return map;
+    }
+
+    /**
+     * 通过充值记录编号查询充值记录
+     * @param rechargeRecordId
+     * @return
+     */
+    public Map<String,Object> find_recharge_recordByrechargeRecordId(String rechargeRecordId)
+    {
+        Map<String,Object> map=new HashMap<String,Object>();
+        recharge_record recharge_record=recharge_recorddao.find_recharge_recordByrechargeRecordId(rechargeRecordId);
+        if(null!=recharge_record)
+        {
+            recharge_record.setAdmin(adminservice.find_adminByadminId(recharge_record.getAdminId()));
+            recharge_record.setCustomer_info(customer_infodao.find_customer_infoBycustomerinfoId(recharge_record.getCustomerinfoId()));
+            if(null!=recharge_record.getSetMealId()&&!"".equals(recharge_record.getSetMealId()))
+                recharge_record.setSet_meal(set_mealservice.find_set_mealBysetMealId(recharge_record.getSetMealId()));
+            map.put("recharge_record",recharge_record);
+            map.put("result",true);
+        }
+        else
+            map.put("result",false);
+        return map;
+    }
+
+    /**
+     * 修改充值记录
+     * @param rechargeRecordId
+     * @param errorCause
+     * @return
+     */
+    public boolean update_recharge_record(String rechargeRecordId,String errorCause)
+    {
+        recharge_record recharge_record=recharge_recorddao.find_recharge_recordByrechargeRecordId(rechargeRecordId);
+        if(null!=recharge_record)
+        {
+            String recoverstateId=recharge_record.getStateId();
+            recharge_record.setStateId("42e92020-10ad-4954-a94a-4e1f71673fda");
+            recharge_record.setErrorCause(errorCause);
+            String adminAccount= SecurityUtils.getSubject().getPrincipal().toString();
+            admin admin=adminservice.find_adminByadminAccount(adminAccount);
+            recharge_record.setAdminId(admin.getAdminId());
+            recharge_record.setUpdateDate(new Date());
+            if(0<recharge_recorddao.update_recharge_record(recharge_record))
+            {
+                customer_info customer_info=customer_infodao.find_customer_infoBycustomerinfoId(recharge_record.getCustomerinfoId());
+                if(null!=customer_info)
+                {
+                    customer_info.setBalance(customer_info.getBalance()-recharge_record.getRechargeMoney()-recharge_record.getGivenPrice());
+                    customer_info.setRechargeAmount(customer_info.getRechargeAmount()-recharge_record.getRechargeMoney());
+                    if(0<customer_infodao.update_customer_info(customer_info))
+                        return true;
+                    else
+                    {
+                        recharge_record.setStateId(recoverstateId);
+                        recharge_record.setErrorCause("");
+                        recharge_recorddao.update_recharge_record(recharge_record);
+                        return false;
+                    }
+                }
+                else
+                {
+                    recharge_record.setStateId(recoverstateId);
+                    recharge_record.setErrorCause("");
+                    recharge_recorddao.update_recharge_record(recharge_record);
+                    return false;
+                }
+            }
+            else
+                return false;
+        }
+        else
+            return false;
     }
 }

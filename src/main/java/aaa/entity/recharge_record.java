@@ -21,6 +21,8 @@ public class recharge_record {
     private double rechargeMoney;
     private String adminId;
     private admin admin;
+    private String errorCause;
+    private String stateId;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date updateDate;
 }

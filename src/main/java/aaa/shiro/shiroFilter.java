@@ -24,11 +24,12 @@ public class shiroFilter {
         shiroFilterFactoryBean.setLoginUrl("/adminController/login");
         shiroFilterFactoryBean.setSuccessUrl("/adminController/SuccessIndex");
         Map<String,String> map=new LinkedHashMap<String,String>();
-        map.put("/static/**","anon");
+        map.put("/assets/**","anon");
         map.put("/logout","anon");
         map.put("/favicon.ico","anon");
+        map.put("/js/jquery-1.11.0.min.js","anon");
         map.put("/adminController/loginIndex","anon");
-        map.put("/adminController/login","authc");
+        map.put("/**","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         return shiroFilterFactoryBean;
     }

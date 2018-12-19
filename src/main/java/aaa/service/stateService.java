@@ -1,12 +1,16 @@
 package aaa.service;
 
 import aaa.dao.stateDao;
+import aaa.entity.service;
 import aaa.entity.state;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -29,7 +33,7 @@ public class stateService
      * @return
      */
     public List<state> queryAll(){
-        return  stateDao.queryAll();
+        return  statedao.queryAll();
     }
 
 }

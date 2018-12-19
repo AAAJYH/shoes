@@ -20,7 +20,7 @@
 <header class="am-topbar am-topbar-inverse admin-header">
     <div class="am-topbar-brand">
         <a href="javascript:;" class="tpl-logo">
-            <img src="/assets/img/logo.png" alt="">
+            <img src="/assets/img/shoeslogo.png" alt="">
         </a>
     </div>
     <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
@@ -57,13 +57,20 @@
                     </a>
                 </li>
                 <li class="tpl-left-nav-item">
-                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-bar-chart"></i>
-                        <span>数据表</span>
-                        <i class="tpl-left-nav-content tpl-badge-danger">
-                            12
-                        </i>
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-user"></i>
+                        <span>管理员</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i> <!--新消息提示-->
                     </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="/adminController/AdminManageIndex">
+                                <i class="am-icon-angle-right"></i>
+                                <span>账户管理</span>
+                                <i class="tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="tpl-left-nav-item">
                     <!-- 打开状态 a 标签添加 active 即可   -->
@@ -94,31 +101,32 @@
                 <li class="tpl-left-nav-item">
                     <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-wpforms"></i>
-                        <span>表单</span>
+                        <span>服务管理</span>
                         <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                     </a>
                     <ul class="tpl-left-nav-sub-menu">
                         <li>
-                            <a href="form-amazeui.html">
+                            <a href="/show_service.html">
                                 <i class="am-icon-angle-right"></i>
-                                <span>Amaze UI 表单</span>
-                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                            </a>
-
-                            <a href="form-line.html">
-                                <i class="am-icon-angle-right"></i>
-                                <span>线条表单</span>
+                                <span>服务信息</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-
                 <li class="tpl-left-nav-item">
-                    <a href="login.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-key"></i>
-                        <span>登录</span>
-
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-wpforms"></i>
+                        <span>套餐管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                     </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="/show_set_meal.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>套餐信息</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -126,7 +134,7 @@
     <div class="tpl-content-wrapper">
         <div class="tpl-content-page-title">客户信息</div>
         <ol class="am-breadcrumb">
-            <li><a href="#" class="am-icon-home">首页</a></li>
+            <li><a href="/adminController/SuccessIndex" class="am-icon-home">首页</a></li>
             <li>客户管理</li>
             <li class="am-active">消费记录</li>
         </ol>
@@ -167,15 +175,64 @@
                                 <th class="table-author am-hide-sm-only">消费金额</th>
                                 <th class="table-author am-hide-sm-only">办理人</th>
                                 <th class="table-date am-hide-sm-only">日期</th>
+                                <th class="table-type">纠错</th>
                             </tr>
                             </thead>
-                            <tbody><tr><td colspan="7" style="text-align: center;">暂无数据</td></tr></tbody>
+                            <tbody><tr><td colspan="8" style="text-align: center;">暂无数据</td></tr></tbody>
                         </table>
                         <div class="am-cf"><div class="am-fr" id="expense_recordPage"></div></div>
                     </div>
                 </div>
             </div>
             <div class="tpl-alert"></div>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="delete_expense_record_model">
+    <div class="am-modal-dialog">
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal" id="delete_expense_record_form">
+                <fieldset>
+                    <legend>消费纠错</legend>
+                    <div class="am-form-group" id="error_msg" style="color:red;font-size:15px;font-family: 黑体;display: none;"></div>
+                    <div class="am-form-group">
+                        <label for="delete_customerinfoName">客户姓名</label>
+                        <input type="hidden" id="delete_expenseRecordId" name="expenseRecordId">
+                        <input type="text" id="delete_customerinfoName" name="customerinfoName" readonly>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="delete_phone">手机号</label>
+                        <input type="text" id="delete_phone" name="phone" readonly>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="delete_serviceName">服务名称</label>
+                        <input type="text" id="delete_serviceName" name="serviceName" readonly>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="delete_servicePrice">服务金额</label>
+                        <input type="text" id="delete_servicePrice" name="servicePrice" readonly>
+                    </div>
+                    <div class="delete_expenseMoney">
+                        <label for="delete_expenseMoney">消费金额</label>
+                        <input type="text" id="delete_expenseMoney" name="expenseMoney" readonly>
+                    </div>
+                    <div class="delete_expenseMoney">
+                        <label for="delete_verificationCode">验证码</label>
+                        <div>
+                            <a id="verificationCode_img" onclick="flush_verificationCode()" style="display: inline-block;width:120px;height:40px;"><img data-src="verificationCodeController/generate_verifyCode" src="verificationCodeController/generate_verifyCode" /></a>
+                            <input style="display: inline-block;width:75%;" type="text" id="delete_verificationCode" name="verificationCode">
+                        </div>
+                    </div>
+                    <div class="delete_expenseMoney">
+                        <label for="delete_errorCause">纠错原因</label>
+                        <textarea rows="5" id="delete_errorCause" name="errorCause"></textarea>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
         </div>
     </div>
 </div>
@@ -236,18 +293,196 @@
                     var expense_recordtableHtml="";
                     for(var i=0;i<data.expense_record.length;i++)
                     {
-                        expense_recordtableHtml+="<tr><td>"+data.expense_record[i].customer_info.customerinfoName+"</td><td>"+data.expense_record[i].customer_info.phone+"</td><td class='am-hide-sm-only'>"+data.expense_record[i].serviceName+"</td><td class='am-hide-sm-only'>"+data.expense_record[i].servicePrice+"</td><td class='am-hide-sm-only'>"+data.expense_record[i].expenseMoney+"</td><td class='am-hide-sm-only'>"+data.expense_record[i].admin.adminName+"</td><td class='am-hide-sm-only'>"+data.expense_record[i].updateDate+"</td></tr>";
+                        expense_recordtableHtml+="<tr><td>"+data.expense_record[i].customer_info.customerinfoName+"</td><td>"+data.expense_record[i].customer_info.phone+"</td><td class='am-hide-sm-only'>"+data.expense_record[i].serviceName+"</td><td class='am-hide-sm-only'>"+data.expense_record[i].servicePrice+"</td><td class='am-hide-sm-only'>"+data.expense_record[i].expenseMoney+"</td><td class='am-hide-sm-only'>"+data.expense_record[i].admin.adminName+"</td><td class='am-hide-sm-only'>"+data.expense_record[i].updateDate+"</td>";
+                        if("42e92020-10ad-4954-a94a-4e1f71673fda"==data.expense_record[i].stateId)
+                            expense_recordtableHtml+="<td>"+data.expense_record[i].errorCause+"</td>";
+                        else
+                        expense_recordtableHtml+="<td><button class='am-btn am-btn-default am-btn-xs am-text-danger' data-expenseRecordId='"+data.expense_record[i].expenseRecordId+"' onclick='show_delete_expense_record_model(this)'><span class='am-icon-trash-o'></span> 纠错</button></td>";
+                        expense_recordtableHtml+="</tr>";
                     }
                     $("#expense_recordtable tbody").html(expense_recordtableHtml);
                 }
                 else
-                    $("#expense_recordtable tbody").html("<tr><td colspan='7' style='text-align: center;'>暂无数据</td></tr>");
+                    $("#expense_recordtable tbody").html("<tr><td colspan='8' style='text-align: center;'>暂无数据</td></tr>");
             },
             error:function()
             {
-                $("#expense_recordtable tbody").html("<tr><td colspan='7' style='text-align: center;'>暂无数据</td></tr>");
+                $("#expense_recordtable tbody").html("<tr><td colspan='8' style='text-align: center;'>暂无数据</td></tr>");
             }
         });
+    }
+    //纠错
+    function show_delete_expense_record_model(obj)
+    {
+        var expenseRecordId=$(obj).attr("data-expenseRecordId");
+        flush_verificationCode();
+        $.ajax({
+            url:"expense_recordController/find_expense_recordByexpenseRecordId",
+            dataType:"json",
+            type:"post",
+            data:{expenseRecordId:expenseRecordId},
+            success:function (data)
+            {
+                if(data.result)
+                {
+                    $("#delete_expenseRecordId").val(data.expense_record.expenseRecordId);
+                    $("#delete_customerinfoName").val(data.expense_record.customer_info.customerinfoName);
+                    $("#delete_phone").val(data.expense_record.customer_info.phone);
+                    $("#delete_serviceName").val(data.expense_record.serviceName);
+                    $("#delete_servicePrice").val(data.expense_record.servicePrice);
+                    $("#delete_expenseMoney").val(data.expense_record.expenseMoney);
+                    delete_expense_record();
+                }
+                else
+                    show_alert("提示","抱歉,加载消费记录信息失败!");
+            },
+            error:function()
+            {
+                show_alert("提示","抱歉,加载消费记录信息失败!");
+            }
+        });
+    }
+    //删除消费记录
+    function delete_expense_record()
+    {
+        $("#delete_expense_record_model").modal({
+            relatedTarget: this,
+            onConfirm: function (e)
+            {
+                var expenseRecordId=$("#delete_expenseRecordId").val();
+                var errorCause=$("#delete_errorCause").val();
+                var verificationCode=$("#delete_verificationCode").val();
+                if(null!=verificationCode&&""!=verificationCode)
+                {
+                    $.ajax({
+                        url:"verificationCodeController/check_verificationCode",
+                        dataType:"json",
+                        type:"post",
+                        data:{verificationCode:verificationCode},
+                        success:function(data)
+                        {
+                            if(data)
+                            {
+                                hide_error_msg();
+                                if(null!=errorCause&&""!=errorCause)
+                                {
+                                    $.ajax({
+                                        url:"expense_recordController/update_expense_record",
+                                        dataType:"json",
+                                        type:"post",
+                                        data:{expenseRecordId:expenseRecordId,errorCause:errorCause},
+                                        success:function(data)
+                                        {
+                                            if(data)
+                                            {
+                                                show_alert("提示","消息记录纠错成功!");
+                                                find_expense_recordBykeyValueorupdateDate(1);
+                                            }
+                                            else
+                                                show_alert("提示","抱歉,消息记录纠错失败,请重试!");
+                                            clear_delete_expense_record();
+                                        },
+                                        error:function()
+                                        {
+                                            show_alert("提示","抱歉,消息记录纠错失败,请重试!");
+                                            clear_delete_expense_record();
+                                        }
+                                    });
+                                }
+                                else
+                                {
+                                    show_alert("警告","纠错原因不能为空,请重新输入!");
+                                    clear_delete_expense_record();
+                                }
+                            }
+                            else
+                                show_alert("警告","验证码输入错误,请重试!");
+                        },
+                        error:function()
+                        {
+                            show_error_msg("验证码检验失败,请重试!");
+                        }
+                    });
+                }
+                else
+                    show_alert("警告","验证码不能为空,请输入!");
+            },
+            onCancel:function()
+            {
+                clear_delete_expense_record();
+                hide_error_msg();
+            }
+        });
+    }
+    //当光标离开验证码文本框时校验
+    $("#delete_verificationCode").blur(
+        function()
+        {
+            var verificationCode=$(this).val();
+            if(null!=verificationCode&&""!=verificationCode)
+            {
+                $.ajax({
+                    url:"verificationCodeController/check_verificationCode",
+                    dataType:"json",
+                    type:"post",
+                    data:{verificationCode:verificationCode},
+                    success:function(data)
+                    {
+                        if(data)
+                            hide_error_msg();
+                        else
+                            show_error_msg("验证码输入错误,请重试!");
+                    },
+                    error:function()
+                    {
+                        show_error_msg("验证码检验失败,请重试!");
+                    }
+                });
+            }
+            else
+                show_error_msg("验证码不能为空,请输入!");
+        }
+    );
+    //清除纠错消费记录文本框
+    function clear_delete_expense_record()
+    {
+        $("#delete_expenseRecordId").val("");
+        $("#delete_customerinfoName").val("");
+        $("#delete_phone").val("");
+        $("#delete_serviceName").val("");
+        $("#delete_servicePrice").val("");
+        $("#delete_expenseMoney").val("");
+        $("#delete_errorCause").val("");
+        $("#delete_verificationCode").val("");
+    }
+    //刷新验证码图片
+    function flush_verificationCode()
+    {
+        var src=$("#verificationCode_img").children("img").attr("data-src");
+        $("#verificationCode_img").children("img").attr("src",src+"?T="+Math.random());
+    }
+    //显示错误信息
+    function show_error_msg(str)
+    {
+        $("#error_msg").css("display","block");
+        $("#error_msg").text(str);
+    }
+    //隐藏错误信息
+    function hide_error_msg()
+    {
+        $("#error_msg").css("display","none");
+        $("#error_msg").text("");
+    }
+    /**
+     * 具有确认按钮的提示框
+     * @param state 状态
+     * @param message 信息
+     */
+    function show_alert(state,message)
+    {
+        $("#my_alert").remove();
+        $("body").append("<div class='am-modal am-modal-alert' tabindex='-1' id='my_alert'><div class='am-modal-dialog'><div class='am-modal-hd'>"+state+"</div><div class='am-modal-bd'>"+message+"</div><div class='am-modal-footer'><span class='am-modal-btn'>确定</span></div></div></div>");
+        $('#my_alert').modal();
     }
 </script>
 </body>

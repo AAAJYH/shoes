@@ -36,7 +36,7 @@
     <header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
             <a href="javascript:;" class="tpl-logo">
-                <img src="/assets/img/logo.png" alt="">
+                <img src="/assets/img/shoeslogo.png" alt="">
             </a>
         </div>
         <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
@@ -97,77 +97,67 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="tpl-left-nav-item">
                         <a href="chart.html" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-bar-chart"></i>
                             <span>数据表</span>
                             <i class="tpl-left-nav-content tpl-badge-danger">12</i>
                         </a>
-
                     </li>
-
                     <li class="tpl-left-nav-item">
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-table"></i>
-                            <span>表格</span>
+                            <span>客户管理</span>
                             <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="table-font-list.html">
+                                <!-- 打开状态 a 标签添加 active 即可   -->
+                                <a href="/show_customer_info.html">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>文字表格</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                    <span>客户信息</span>
                                 </a>
-
-                                <a href="table-images-list.html">
+                                <a href="/show_recharge_record.html">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>图片表格</span>
-                                    <i class="tpl-left-nav-content tpl-badge-success">18</i>
-
-                                    <a href="form-news.html">
-                                        <i class="am-icon-angle-right"></i>
-                                        <span>消息列表</span>
-                                        <i class="tpl-left-nav-content tpl-badge-primary">5</i>
-                                        <a href="form-news-list.html">
-                                            <i class="am-icon-angle-right"></i>
-                                            <span>文字列表</span>
-                                        </a>
+                                    <span>充值记录</span>
+                                </a>
+                                <a href="/show_expense_record.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>消费记录</span>
+                                </a>
                             </li>
                         </ul>
                     </li>
-
                     <li class="tpl-left-nav-item">
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-wpforms"></i>
-                            <span>表单</span>
-                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                            <span>服务管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
-                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                        <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="form-amazeui.html">
+                                <a href="/show_service.html">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>Amaze UI 表单</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-
-                                <a href="form-line.html">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>线条表单</span>
+                                    <span>服务信息</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
-
                     <li class="tpl-left-nav-item">
-                        <a href="login.html" class="nav-link tpl-left-nav-link-list">
-                            <i class="am-icon-key"></i>
-                            <span>登录</span>
-
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-wpforms"></i>
+                            <span>套餐管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
+                        <ul class="tpl-left-nav-sub-menu">
+                            <li>
+                                <a href="/show_set_meal.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>套餐信息</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -181,7 +171,7 @@
             <div class="tpl-portlet-components">
                 <div class="tpl-block">
                     <div class="am-g">
-                        <div class="am-u-sm-12 am-u-md-6">
+                        <div class="am-u-sm-12 am-u-md-3">
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
                                     <button type="button" class="am-btn am-btn-default am-btn-success add"><span class="am-icon-plus"></span> 新增</button>
@@ -471,14 +461,13 @@
                             $(".am-dimmer").css("display","none");
                         }
                     });
-                    $("#cancel").click(function(){
-                        //关闭表单
-                        $('#my_alert').css("display","none");
-                        $(".am-dimmer").css("display","none");
-                        $(".am-active").css("display","none");
-                    });
                 }
                 return false;
+            });
+            $("#cancel").click(function(){
+                //关闭表单
+                $('#my_alert').css("display","none");
+                $(".am-dimmer").css("display","none");
             });
         }
 
