@@ -58,7 +58,7 @@ public class adminController {
                 }
             }
             request.getSession().setAttribute("msg",msg);
-            return "login";
+            return "redirect:/adminController/loginIndex";
     }
 
     /**
@@ -173,6 +173,17 @@ public class adminController {
             return "修改成功，请重新登陆";
         }else{
             return "原密码不正确！";
+        }
+    }
+
+    @RequestMapping("/isHasEdit")
+    @ResponseBody
+    public boolean isHasEdit(){
+        admin a=adminService.ByAccountQuery(SecurityUtils.getSubject().getPrincipal().toString());
+        if(a.getAdminAuthority().equals("超级管理员")){
+            return true;
+        }else{
+            return false;
         }
     }
 

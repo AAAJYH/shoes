@@ -138,7 +138,7 @@
                     <div class="am-g">
                         <div class="am-u-sm-12 am-u-md-3">
                             <div class="am-btn-toolbar">
-                                <shiro:hasAnyRoles name = "超级管理员">
+                            <shiro:hasAnyRoles name = "超级管理员">
                                 <div class="am-btn-group am-btn-group-xs">
                                     <button type="button" class="am-btn am-btn-default am-btn-success add"><span class="am-icon-plus"></span> 新增</button>
                                 </div>
@@ -572,14 +572,32 @@
                         * 编辑点击事件
                         */
                        $(".edit").click(function(){
-                           var adminId=$(this).prev().val();
-                           var adminName=$(this).parent().parent().parent().prev().prev().prev().prev().prev().prev().prev().text();
-                           var adminAuthority=$(this).parent().parent().parent().prev().prev().prev().prev().text();
-                           var adminPhone=$(this).parent().parent().parent().prev().prev().prev().prev().prev().text();
-                           show_alert("编辑管理员信息",formInfo(adminId,adminName,adminAuthority,adminPhone));
-                           $("#accountDiv").css("display","none");
-                           $("#pwdDiv").css("display","none");
-                           url="/adminController/update";
+                           var rs=false;
+                           $.ajax({
+                              url:'/adminController/isHasEdit',
+                              type:'post',
+                              async:false,
+                              dataType:'text',
+                              success:function(data){
+                                  if(data=="true"){
+                                      rs=true;
+                                  }else if(data=="false"){
+                                      rs=false;
+                                  }
+                              }
+                           });
+                           if(rs){
+                               var adminId=$(this).prev().val();
+                               var adminName=$(this).parent().parent().parent().prev().prev().prev().prev().prev().prev().prev().text();
+                               var adminAuthority=$(this).parent().parent().parent().prev().prev().prev().prev().text();
+                               var adminPhone=$(this).parent().parent().parent().prev().prev().prev().prev().prev().text();
+                               show_alert("编辑管理员信息",formInfo(adminId,adminName,adminAuthority,adminPhone));
+                               $("#accountDiv").css("display","none");
+                               $("#pwdDiv").css("display","none");
+                               url="/adminController/update";
+                           }else{
+                               alert("抱歉，你没有修改权限");
+                           }
                            return false;
                        });
 

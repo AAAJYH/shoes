@@ -22,7 +22,7 @@ public class shiroFilter {
         ShiroFilterFactoryBean shiroFilterFactoryBean=new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager());
         Map Map=new LinkedHashMap();
-        Map.put("authc",new MyFormAuthenticationFilter());
+        Map.put("authc",new MyformAuthenticationFilter());
         shiroFilterFactoryBean.setFilters(Map);
         shiroFilterFactoryBean.setLoginUrl("/adminController/login");
         shiroFilterFactoryBean.setSuccessUrl("/adminController/SuccessIndex");

@@ -410,12 +410,17 @@
                                    $("#paging_toolbar1").append("<li id=\"prev\"><a href=\"javascript:;\">«</a></li>");
                                    for(var i=1;i<=Math.ceil(total/rows1);i++){
                                        if(page1!=i){
-                                           $("#paging_toolbar1").append("<li class='page'><a href=\"javascript:;\">"+i+"</a></li>");
+                                           $("#paging_toolbar1").append("<li class='page page1'><a href=\"javascript:;\">"+i+"</a></li>");
                                        }else{
                                            $("#paging_toolbar1").append("<li class=\"am-active page\"><a href=\"javascript:;\">"+i+"</a></li>");
                                        }
                                    }
                                    $("#paging_toolbar1").append("<li id='next'><a href=\"javascript:;\">»</a></li>");
+
+                                   $(".page1").click(function(){
+                                       page1=$(this).text();
+                                       loadRechargeDate(page1,rows1,customName1);
+                                   });
 
                                    /**
                                     * 上一页
@@ -577,12 +582,17 @@
                                     $("#paging_toolbar2").append("<li id=\"prev2\"><a href=\"javascript:;\">«</a></li>");
                                     for(var i=1;i<=Math.ceil(total/rows1);i++){
                                         if(page2!=i){
-                                            $("#paging_toolbar2").append("<li class='page'><a href=\"javascript:;\">"+i+"</a></li>");
+                                            $("#paging_toolbar2").append("<li class='page page2'><a href=\"javascript:;\">"+i+"</a></li>");
                                         }else{
                                             $("#paging_toolbar2").append("<li class=\"am-active page\"><a href=\"javascript:;\">"+i+"</a></li>");
                                         }
                                     }
                                     $("#paging_toolbar2").append("<li id='next2'><a href=\"javascript:;\">»</a></li>");
+
+                                    $(".page2").click(function(){
+                                       page1=$(this).text();
+                                        loadExpenseDate(page1,rows1,customName1);
+                                    });
 
                                     /**
                                      * 上一页
