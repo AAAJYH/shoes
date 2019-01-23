@@ -1,0 +1,673 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>服务信息</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body data-type="generalComponents">
+<header class="am-topbar am-topbar-inverse admin-header">
+    <div class="am-topbar-brand">
+        <a href="javascript:;" class="tpl-logo">
+            <img src="/assets/img/shoeslogo.png" alt="">
+        </a>
+    </div>
+    <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+    </div>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+            <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+            <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+                    <span class="tpl-header-list-user-nick">禁言小张</span><span class="tpl-header-list-user-ico"><img src="/assets/img/user01.png"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
+                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
+            </li>
+            <li><a href="###" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+        </ul>
+    </div>
+</header>
+<div class="tpl-page-container tpl-page-header-fixed">
+    <div class="tpl-left-nav tpl-left-nav-hover">
+        <div class="tpl-left-nav-title">
+            Shoes 列表
+        </div>
+        <div class="tpl-left-nav-list">
+            <ul class="tpl-left-nav-menu">
+                <li class="tpl-left-nav-item">
+                    <a href="index.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-home"></i>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-user"></i>
+                        <span>管理员</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i> <!--新消息提示-->
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="/adminController/AdminManageIndex">
+                                <i class="am-icon-angle-right"></i>
+                                <span>账户管理</span>
+                                <i class="tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <!-- 打开状态 a 标签添加 active 即可   -->
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-table"></i>
+                        <span>客户管理</span>
+                        <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <!-- 打开状态 a 标签添加 active 即可   -->
+                            <a href="/show_customer_info.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>客户信息</span>
+                            </a>
+                            <a href="/show_recharge_record.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>充值记录</span>
+                            </a>
+                            <a href="/show_expense_record.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>消费记录</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
+                        <i class="am-icon-wpforms"></i>
+                        <span>服务管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display:block">
+                        <li>
+                            <a href="/show_service.html" class="active">
+                                <i class="am-icon-angle-right"></i>
+                                <span>服务信息</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-wpforms"></i>
+                        <span>套餐管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="/show_set_meal.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>套餐信息</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="tpl-content-wrapper">
+        <div class="tpl-content-page-title">服务管理</div>
+        <ol class="am-breadcrumb">
+            <li><a href="/adminController/SuccessIndex" class="am-icon-home">首页</a></li>
+            <li>服务管理</li>
+            <li class="am-active">服务信息</li>
+        </ol>
+        <div class="tpl-portlet-components">
+            <div class="portlet-title">
+                <div class="caption font-green bold">
+                    <span class="am-icon-code"></span> 服务信息
+                </div>
+            </div>
+            <div class="tpl-block">
+                <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-3">
+                        <div class="am-btn-toolbar">
+                            <div class="am-btn-group am-btn-group-xs">
+                                <button type="button" class="am-btn am-btn-default am-btn-success" onclick="insert_service()"><span class="am-icon-plus"></span> 新增</button>
+                                <button type="button" class="am-btn am-btn-default am-btn-warning" onclick="clickrecover_servicebtn()"><span class="am-icon-archive"></span> 恢复</button>
+                                <button type="button" class="am-btn am-btn-default am-btn-danger" onclick="clickdelete_servicebtn()"><span class="am-icon-trash-o" ></span> 删除</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-3">
+                        <div class="am-form-group">
+                            <select data-am-selected="{btnSize: 'sm'}" id="selectState"></select>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-3">
+                        <div class="am-input-group am-input-group-sm">
+                            <input type="text" class="am-form-field" id="keyValue" placeholder="搜索名称/价格">
+                            <span class="am-input-group-btn">
+                                <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="button"></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-g">
+                    <div class="am-u-sm-12">
+                        <table class="am-table am-table-striped am-table-hover table-main" id="servicetable">
+                            <thead>
+                            <tr>
+                                <th class="table-check"><input type="checkbox" class="tpl-table-fz-check"></th>
+                                <th class="table-title">服务名称</th>
+                                <th class="table-type am-hide-sm-only">服务价格</th>
+                                <th class="table-author am-hide-sm-only">办理人</th>
+                                <th class="table-author am-hide-sm-only">日期</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody><tr><td colspan="6" style="text-align: center;">暂无数据</td></tr></tbody>
+                        </table>
+                        <div class="am-cf"><div class="am-fr" id="servicePage"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tpl-alert"></div>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="insert_service_model">
+    <div class="am-modal-dialog">
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal" id="insert_service_form">
+                <fieldset>
+                    <legend>新增服务</legend>
+                    <div class="am-form-group">
+                        <label for="insert_serviceName">服务名称</label>
+                        <input type="text" id="insert_serviceName" name="serviceName">
+                    </div>
+                    <div class="am-form-group">
+                        <label for="insert_servicePrice">服务价格</label>
+                        <input type="text" id="insert_servicePrice" name="servicePrice">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="update_service_model">
+    <div class="am-modal-dialog">
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal" id="update_service_form">
+                <fieldset>
+                    <legend>修改服务</legend>
+                    <div class="am-form-group">
+                        <label for="update_servicePrice">服务名称</label>
+                        <input type="hidden" id="update_serviceId" name="serviceId">
+                        <input type="text" id="update_serviceName" name="serviceName">
+                    </div>
+                    <div class="am-form-group">
+                        <label for="update_servicePrice">服务价格</label>
+                        <input type="text" id="update_servicePrice" name="servicePrice">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="/assets/js/app.js"></script>
+<script>
+    $(function(){
+        selectState();
+        find_serviceBykeyValueOrstateId(1);
+    });
+    //查询状态
+    function selectState()
+    {
+        $.ajax({
+            url:"/stateController/queryAll",
+            dataType:"json",
+            type:"post",
+            success:function(data)
+            {
+                if(null!=data&&0<data.length)
+                {
+                    var selectStateHtml="";
+                    selectStateHtml+="<option class='op' value='请选择状态...'>请选择状态...</option>";
+                    for(var i=0;i<data.length;i++)
+                    {
+                        selectStateHtml+="<option class='op' value='"+data[i].stateId+"'>"+data[i].stateName+"</option>";
+                    }
+                    $("#selectState").html(selectStateHtml);
+                }
+            }
+        });
+    }
+    //查询服务
+    function find_serviceBykeyValueOrstateId(pageIndex)
+    {
+        var selectoption=$("#selectState option:selected");
+        var stateId=selectoption.val();
+        if(stateId=="请选择状态...")
+            stateId=null;
+        var keyValue=$("#keyValue").val();
+        $.ajax({
+            url:"serviceController/find_serviceBykeyValueOrstateId",
+            dataType:"json",
+            type:"post",
+            data:{pageIndex:pageIndex,keyValue:keyValue,stateId:stateId},
+            success:function(data)
+            {
+                if(data.result&&0<data.service.length)
+                {
+                    var servicePageHtml="<ul class='am-pagination tpl-pagination'>";
+                    if(1!=data.currentIndex)
+                        servicePageHtml+="<li onclick='find_serviceBykeyValueOrstateId("+(data.currentIndex-1)+")'><a href='javascript:;'>«</a></li>";
+                    for(var i=data.currentIndex-4;i<data.currentIndex;i++)
+                    {
+                        if(i>0)
+                            servicePageHtml+="<li onclick='find_serviceBykeyValueOrstateId("+i+")'><a href='javascript:;'>"+i+"</a></li>";
+                    }
+                    servicePageHtml+="<li class='am-active'><a>"+data.currentIndex+"</a></li>";
+                    var page=data.currentIndex+4;
+                    if(page>data.pageCount)
+                        page=data.pageCount;
+                    for(var i=data.currentIndex+1;i<=page;i++)
+                    {
+                        servicePageHtml+="<li onclick='find_serviceBykeyValueOrstateId("+i+")'><a href='javascript:;'>"+i+"</a></li>";
+                    }
+                    if(data.pageCount!=data.currentIndex)
+                        servicePageHtml+="<li onclick='find_serviceBykeyValueOrstateId("+(data.currentIndex+1)+")'><a href='javascript:;'>»</a></li>";
+                    servicePageHtml+="</ul>";
+                    $("#servicePage").html(servicePageHtml);
+                    var servicetable="";
+                    for(var i=0;i<data.service.length;i++)
+                    {
+                        servicetable+="<tr>";
+                        servicetable+="<td><input type='checkbox' class='serviceCheckbox' data-serviceId='"+data.service[i].serviceId+"' onclick='serviceCheckbox()'></td><td>"+data.service[i].serviceName+"</td><td class='am-hide-sm-only'>"+data.service[i].servicePrice+"</td><td class='am-hide-sm-only'>"+data.service[i].admin.adminName+"</td><td class='am-hide-sm-only'>"+data.service[i].updateDate+"</td>";
+                        servicetable+="<td><button class='am-btn am-btn-default am-btn-xs am-text-secondary' data-serviceId='"+data.service[i].serviceId+"' onclick='update_service(this)'><span class='am-icon-pencil-square-o'></span> 编辑</button>"
+                        if("66e75647-2b10-4553-a43d-2bb30fa33af7"==data.service[i].stateId)
+                            servicetable+="<button class='am-btn am-btn-default am-btn-xs am-text-danger' data-serviceId='"+data.service[i].serviceId+"' onclick='clickdelete_service(this)'><span class='am-icon-trash-o'></span> 删除</button>";
+                        else
+                            servicetable+="<button type='button' class='am-btn am-btn-default am-btn-xs' data-serviceId='"+data.service[i].serviceId+"' onclick='clickrecover_service(this)'><span class='am-icon-copy'></span> 恢复</button>";
+                        servicetable+="</td>";
+                        servicetable+="</tr>";
+                    }
+                    $("#servicetable tbody").html(servicetable);
+                }
+                else
+                    $("#servicetable tbody").html("<tr><td colspan='6' style='text-align: center;'>暂无数据</td></tr>");
+            },
+            error:function () {
+                $("#servicetable tbody").html("<tr><td colspan='6' style='text-align: center;'>暂无数据</td></tr>");
+            }
+        });
+    }
+    //状态选择框改变
+    $("#selectState").change(
+        function()
+        {
+            find_serviceBykeyValueOrstateId(1);
+        }
+    );
+    //搜索框值改变
+    $("#keyValue").keyup(
+        function()
+        {
+            find_serviceBykeyValueOrstateId(1);
+        }
+    );
+    //点击恢复按钮恢复服务
+    function clickrecover_service(obj)
+    {
+        var serviceId=$(obj).attr("data-serviceId");
+        var array=new Array();
+        array.push(serviceId);
+        recover_service(array);
+    }
+    //点击删除按钮删除服务
+    function clickdelete_service(obj)
+    {
+        var serviceId=$(obj).attr("data-serviceId");
+        var array=new Array();
+        array.push(serviceId);
+        delete_service(array);
+    }
+    //点击多选恢复按钮恢复服务
+    function clickrecover_servicebtn()
+    {
+        var array=new Array();
+        $("input[class='serviceCheckbox'][type='checkbox']:checked").each(
+            function()
+            {
+                array.push($(this).attr("data-serviceId"));
+            }
+        );
+        recover_service(array);
+    }
+    //点击多选删除按钮删除服务
+    function clickdelete_servicebtn()
+    {
+        var array=new Array();
+        $("input[class='serviceCheckbox'][type='checkbox']:checked").each(
+            function()
+            {
+                array.push($(this).attr("data-serviceId"));
+            }
+        );
+        delete_service(array);
+    }
+    //恢复服务
+    function recover_service(serviceId)
+    {
+        if(0==serviceId.length)
+            show_alert("警告","请选择需要恢复的服务!");
+        else
+        {
+            $.ajax({
+                url:"serviceController/recover_service",
+                dataType:"json",
+                type:"post",
+                data:{serviceIds:serviceId},
+                traditional:true,//防止深度序列化
+                success:function(data)
+                {
+                    if(data)
+                    {
+                        show_alert("提示","恢复服务成功!");
+                        $(".tpl-table-fz-check").prop("checked",false);
+                        find_serviceBykeyValueOrstateId(1);
+                    }
+                    else
+                        show_alert("提示","抱歉恢复服务失败,请重试!");
+                },
+                error:function()
+                {
+                    show_alert("提示","抱歉恢复服务失败,请重试!");
+                }
+            });
+        }
+    }
+    //删除服务
+    function delete_service(serviceId)
+    {
+        if(0==serviceId.length)
+            show_alert("警告","请选择需要删除的服务!");
+        else
+        {
+            $.ajax({
+                url:"serviceController/delete_service",
+                dataType:"json",
+                type:"post",
+                data:{serviceIds:serviceId},
+                traditional:true,//防止深度序列化
+                success:function(data)
+                {
+                    if(data)
+                    {
+                        show_alert("提示","删除服务成功!");
+                        $(".tpl-table-fz-check").prop("checked",false);
+                        find_serviceBykeyValueOrstateId(1);
+                    }
+                    else
+                        show_alert("提示","抱歉删除服务失败,请重试!");
+                },
+                error:function()
+                {
+                    show_alert("提示","抱歉删除服务失败,请重试!");
+                }
+            });
+        }
+    }
+    //点击全选/全不选按钮
+    $(".tpl-table-fz-check").click(
+        function()
+        {
+            var state=$(this).is(':checked');
+            if(state)
+                $(".serviceCheckbox").prop("checked",true);
+            else
+                $(".serviceCheckbox").prop("checked",false);
+        }
+    );
+    //点击check按钮
+    function serviceCheckbox()
+    {
+        var length=$(".serviceCheckbox").length;
+        var checklength=$("input[class='serviceCheckbox'][type='checkbox']:checked").length;
+        if(length==checklength)
+            $(".tpl-table-fz-check").prop("checked",true);
+        else
+            $(".tpl-table-fz-check").prop("checked",false);
+    }
+    //添加服务
+    function insert_service()
+    {
+        $("#insert_service_model").modal({
+            relatedTarget: this,
+            onConfirm: function (e)
+            {
+                var serviceName=$("#insert_serviceName").val();
+                var servicePrice=$("#insert_servicePrice").val();
+                if(null!=serviceName&&""!=serviceName)
+                {
+                    if(null!=servicePrice&&""!=servicePrice)
+                    {
+                        if(isNumber(servicePrice))
+                        {
+                            if(0<=parseFloat(servicePrice))
+                            {
+                                $.ajax({
+                                    url:"serviceController/insert_service",
+                                    dataType:"json",
+                                    type:"post",
+                                    data:{serviceName:serviceName,servicePrice:servicePrice},
+                                    success:function(data)
+                                    {
+                                        if(data)
+                                            find_serviceBykeyValueOrstateId(1);
+                                        else
+                                            show_alert("提示","抱歉,添加服务失败,请重试!");
+                                        clear_insert_service();
+                                    },
+                                    error:function()
+                                    {
+                                        clear_insert_service();
+                                        show_alert("提示","抱歉,添加服务失败,请重试!");
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                clear_insert_service();
+                                show_alert("警告","服务价格不能小于0元,请重新输入!");
+                            }
+                        }
+                        else
+                        {
+                            clear_insert_service();
+                            show_alert("警告","服务价格格式错误,请重新输入!");
+                        }
+                    }
+                    else
+                    {
+                        clear_insert_service();
+                        show_alert("警告","服务价格不能为空,请重新输入!");
+                    }
+                }
+                else
+                {
+                    clear_insert_service();
+                    show_alert("警告", "服务名称不能为空,请重新输入!");
+                }
+            },
+            onCancel:function()
+            {
+                clear_insert_service();
+            }
+        });
+    }
+    //修改服务
+    function update_service(obj)
+    {
+        var serviceId=$(obj).attr("data-serviceId");
+        $.ajax({
+            url:"serviceController/find_serviceByserviceId",
+            dataType:"json",
+            type:"post",
+            data:{serviceId:serviceId},
+            success:function(data)
+            {
+                if(data.result)
+                {
+                    $("#update_serviceName").val(data.service.serviceName);
+                    $("#update_servicePrice").val(data.service.servicePrice);
+                    $("#update_serviceId").val(data.service.serviceId);
+                    show_update_service();
+                }
+                else
+                {
+                    clear_update_service();
+                    show_alert("提示","抱歉,加载服务信息失败,请重试!");
+                }
+            },
+            error:function()
+            {
+                clear_update_service();
+                show_alert("提示","抱歉,加载服务信息失败,请重试!");
+            }
+        });
+    }
+    //显示修改服务模态框
+    function show_update_service()
+    {
+        $("#update_service_model").modal({
+            relatedTarget: this,
+            onConfirm: function (e)
+            {
+                var serviceName=$("#update_serviceName").val();
+                var servicePrice=$("#update_servicePrice").val();
+                var serviceId=$("#update_serviceId").val();
+                if(null!=serviceName&&""!=serviceName)
+                {
+                    if(null!=servicePrice&&""!=servicePrice)
+                    {
+                        if(isNumber(servicePrice))
+                        {
+                            if(0<=parseFloat(servicePrice))
+                            {
+                                $.ajax({
+                                    url:"serviceController/update_service",
+                                    dataType:"json",
+                                    type:"post",
+                                    data:{serviceId:serviceId,serviceName:serviceName,servicePrice:servicePrice},
+                                    success:function(data)
+                                    {
+                                        if(data)
+                                            find_serviceBykeyValueOrstateId(1);
+                                        else
+                                            show_alert("提示","抱歉,修改服务失败,请重试!");
+                                        clear_insert_service();
+                                    },
+                                    error:function()
+                                    {
+                                        clear_insert_service();
+                                        show_alert("提示","抱歉,修改服务失败,请重试!");
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                clear_insert_service();
+                                show_alert("警告","服务价格格式错误,请重新输入!");
+                            }
+                        }
+                        else
+                        {
+                            clear_insert_service();
+                            show_alert("警告","服务价格格式错误,请重新输入!");
+                        }
+                    }
+                    else
+                    {
+                        clear_insert_service();
+                        show_alert("警告","服务价格不能为空,请重新输入!");
+                    }
+                }
+                else
+                {
+                    clear_insert_service();
+                    show_alert("警告", "服务名称不能为空,请重新输入!");
+                }
+            },
+            onCancel:function()
+            {
+                clear_update_service();
+            }
+        });
+    }
+    //清除修改服务文本框
+    function clear_update_service()
+    {
+        $("#update_serviceName").val("");
+        $("#update_servicePrice").val("");
+        $("#update_serviceId").val("");
+    }
+    //清除新增服务文本框
+    function clear_insert_service()
+    {
+        $("#insert_serviceName").val("");
+        $("#insert_servicePrice").val("");
+    }
+    //检测值是否为数字类型
+    function isNumber(val)
+    {
+        var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+        var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+        if (regPos.test(val) || regNeg.test(val)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    /**
+     * 具有确认按钮的提示框
+     * @param state 状态
+     * @param message 信息
+     */
+    function show_alert(state,message)
+    {
+        $("#my_alert").remove();
+        $("body").append("<div class='am-modal am-modal-alert' tabindex='-1' id='my_alert'><div class='am-modal-dialog'><div class='am-modal-hd'>"+state+"</div><div class='am-modal-bd'>"+message+"</div><div class='am-modal-footer'><span class='am-modal-btn'>确定</span></div></div></div>");
+        $('#my_alert').modal();
+    }
+</script>
+</body>
+</html>

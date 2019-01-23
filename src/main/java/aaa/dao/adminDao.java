@@ -6,11 +6,11 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 管理员数据访问层
- */
+import org.apache.ibatis.annotations.*;
+
 @Mapper
-public interface adminDao {
+public interface adminDao
+{
 
     /**
      * 根据账号查询当前管理员是否存在，并且为正常状态

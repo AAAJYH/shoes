@@ -3,24 +3,19 @@ package aaa.service;
 import aaa.dao.adminDao;
 import aaa.entity.admin;
 import aaa.entity.paging;
-import aaa.util.currentInfo;
 import com.github.pagehelper.PageHelper;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 管理员业务逻辑层
- */
 @Service
-public class adminService {
-
+@Transactional
+public class adminService
+{
     @Resource
-    adminDao adminDao;
+    private adminDao admindao;
 
     /**
      * 根据账号查询当前管理员是否存在，并且为正常状态
@@ -28,7 +23,7 @@ public class adminService {
      * @return
      */
     public admin ByAccountQuery(String Account){
-        return adminDao.ByAccountQuery(Account);
+        return admindao.ByAccountQuery(Account);
     }
 
     /**
@@ -38,11 +33,12 @@ public class adminService {
      * @return
      */
     public paging<admin> PageQuery(Integer page,Integer rows,String stateId, String condition){
-        Integer total=adminDao.PageQuery(stateId,condition).size();
+        Integer total=admindao.PageQuery(stateId,condition).size();
         PageHelper.startPage(page,rows);
-        List<Map<String,Object>> adminList=adminDao.PageQuery(stateId,condition);
+        List<Map<String,Object>> adminList=admindao.PageQuery(stateId,condition);
         return new paging((int) Math.ceil((double)total/(double)rows),adminList);
     }
+
 
     /**
      * 修改管理员状态
@@ -51,7 +47,7 @@ public class adminService {
      */
     @Transactional
     public int ByAdminIdUpdateState(admin admin){
-        return adminDao.ByAdminIdUpdateState(admin);
+        return admindao.ByAdminIdUpdateState(admin);
     }
 
     /**
@@ -61,7 +57,7 @@ public class adminService {
      */
     @Transactional
     public int add( admin admin){
-        return adminDao.add(admin);
+        return admindao.add(admin);
     }
 
     /**
@@ -71,7 +67,7 @@ public class adminService {
      */
     @Transactional
     public int update(admin admin){
-        return adminDao.update(admin);
+        return admindao.update(admin);
     }
 
     /**
@@ -81,7 +77,7 @@ public class adminService {
      */
     public admin find_adminByadminAccount(String adminAccount)
     {
-       return adminDao.find_adminByadminAccount(adminAccount);
+       return admindao.find_adminByadminAccount(adminAccount);
     }
 
     /**
@@ -91,7 +87,7 @@ public class adminService {
      */
     public admin find_adminByadminId(String adminId)
     {
-        return adminDao.find_adminByadminId(adminId);
+        return admindao.find_adminByadminId(adminId);
     }
 
     /**
@@ -102,7 +98,7 @@ public class adminService {
      */
     @Transactional
     public int updateAdminPassword(String adminAccount,String adminPassword){
-        return adminDao.updateAdminPassword(adminAccount,adminPassword);
+        return admindao.updateAdminPassword(adminAccount,adminPassword);
     }
 
 }

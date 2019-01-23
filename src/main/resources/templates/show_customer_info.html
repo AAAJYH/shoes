@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,17 +20,13 @@
 <header class="am-topbar am-topbar-inverse admin-header">
     <div class="am-topbar-brand">
         <a href="javascript:;" class="tpl-logo">
-            <img src="/assets/img/logo.png" alt="">
+            <img src="/assets/img/shoeslogo.png" alt="">
         </a>
     </div>
     <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
-
     </div>
-
     <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
-
-    <div class="am-collapse am-topbar-collapse" id="topbar-collapse" >
-
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
         <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
             <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
@@ -108,13 +104,43 @@
                         </li>
                     </ul>
                 </li>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-wpforms"></i>
+                        <span>服务管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="/show_service.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>服务信息</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-wpforms"></i>
+                        <span>套餐管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="/show_set_meal.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>套餐信息</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </div>
     </div>
     <div class="tpl-content-wrapper">
         <ol class="am-breadcrumb">
-            <li><a href="#" class="am-icon-home">首页</a></li>
+            <li><a href="/adminController/SuccessIndex" class="am-icon-home">首页</a></li>
             <li>客户管理</a></li>
             <li class="am-active">客户信息</li>
         </ol>
@@ -195,16 +221,16 @@
                 <fieldset>
                     <legend>充值服务</legend>
                     <div class="am-form-group">
-                        <label for="insert_customerinfoName">客户姓名</label>
+                        <label for="recharge_customerinfoName">客户姓名</label>
                         <input type="hidden" id="recharge_customerinfoId">
                         <input type="text" id="recharge_customerinfoName" name="customerinfoName" readonly>
                     </div>
                     <div class="am-form-group">
-                        <label for="insert_phone">手机号</label>
+                        <label for="recharge_phone">手机号</label>
                         <input type="text" id="recharge_phone" name="phone" readonly>
                     </div>
                     <div class="am-form-group">
-                        <label for="insert_rechargeAmount">充值金额</label>
+                        <label for="recharge_rechargeAmount">充值金额</label>
                         <input type="text" id="recharge_rechargeAmount" name="rechargeAmount" placeholder="输入充值金额">
                     </div>
                 </fieldset>
@@ -223,12 +249,12 @@
                 <fieldset>
                     <legend>消费服务</legend>
                     <div class="am-form-group">
-                        <label for="insert_customerinfoName">客户姓名</label>
+                        <label for="consumption_customerinfoName">客户姓名</label>
                         <input type="hidden" id="consumption_customerinfoId">
                         <input type="text" id="consumption_customerinfoName" name="customerinfoName" readonly>
                     </div>
                     <div class="am-form-group">
-                        <label for="insert_phone">手机号</label>
+                        <label for="consumption_phone">手机号</label>
                         <input type="text" id="consumption_phone" name="phone" readonly>
                     </div>
                     <div class="am-form-group">
@@ -236,7 +262,7 @@
                         <select id="consumption_serviceId" required></select>
                     </div>
                     <div class="am-form-group">
-                        <label for="insert_rechargeAmount">消费金额</label>
+                        <label for="consumption_servicePrice">消费金额</label>
                         <input type="text" id="consumption_servicePrice" name="servicePrice" readonly>
                         <input type="hidden" id="consumption_balance">
                     </div>

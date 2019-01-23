@@ -28,4 +28,5 @@ public interface stateDao {
      */
     @Select("select * from state where stateId=#{stateId}")
     public state find_stateBystateId(@Param("stateId") String stateId);
+
 }

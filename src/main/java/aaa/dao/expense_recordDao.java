@@ -1,10 +1,7 @@
 package aaa.dao;
 
 import aaa.entity.expense_record;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +14,7 @@ public interface expense_recordDao
      * @param expense_record
      * @return
      */
-    @Insert("insert into expense_record values(#{expenseRecordId},#{customerinfoId},#{serviceId},#{serviceName},#{servicePrice},#{expenseMoney},#{adminId},#{updateDate})")
+    @Insert({"<script>insert into expense_record(expenseRecordId,customerinfoId,serviceId,serviceName,servicePrice,expenseMoney,adminId<if test=\"null!=errorCause and ''!=errorCause\">,errorCause</if><if test=\"null!=stateId and ''!=stateId\">,stateId</if>,updateDate) values(#{expenseRecordId},#{customerinfoId},#{serviceId},#{serviceName},#{servicePrice},#{expenseMoney},#{adminId}<if test=\"null!=errorCause and ''!=errorCause\">,#{errorCause}</if><if test=\"null!=stateId and ''!=stateId\">,#{stateId}</if>,#{updateDate})</script>"})
     public Integer insert_expense_record(expense_record expense_record);
 
     /**
@@ -47,4 +44,20 @@ public interface expense_recordDao
             "where c.customerinfoId=e.customerinfoId <if test=\"customName!=''\">and c.customerinfoName like concat('%',#{customName},'%')</if> group by c.customerinfoName</script>")
     public List<Map<String,Object>> expenseStatistics(@Param("customName") String customName);
 
+
+    /**
+     * 根据消费记录编号查询消费记录
+     * @param expenseRecordId
+     * @return
+     */
+    @Select("select * from expense_record where expenseRecordId=#{expenseRecordId}")
+    public expense_record find_expense_recordByexpenseRecordId(@Param("expenseRecordId")String expenseRecordId);
+
+    /**
+     * 修改消费记录
+     * @param expense_record
+     * @return
+     */
+    @Update({"<script>update expense_record set expenseRecordId=expenseRecordId<if test=\"null!=customerinfoId and ''!=customerinfoId\">,customerinfoId=#{customerinfoId}</if><if test=\"null!=serviceId and ''!=serviceId\">,serviceId=#{serviceId}</if><if test=\"null!=serviceName and ''!=serviceName\">,serviceName=#{serviceName}</if><if test=\"null!=servicePrice and ''!=servicePrice\">,servicePrice=#{servicePrice}</if><if test=\"null!=expenseMoney and ''!=expenseMoney\">,expenseMoney=#{expenseMoney}</if><if test=\"null!=adminId and ''!=adminId\">,adminId=#{adminId}</if><if test=\"null!=errorCause and ''!=errorCause\">,errorCause=#{errorCause}</if><if test=\"null!=stateId and ''!=stateId\">,stateId=#{stateId}</if><if test=\"null!=updateDate\">,updateDate=#{updateDate}</if> where expenseRecordId=#{expenseRecordId}</script>"})
+    public Integer update_expense_record(expense_record expense_record);
 }

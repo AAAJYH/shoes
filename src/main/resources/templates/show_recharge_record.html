@@ -20,7 +20,7 @@
 <header class="am-topbar am-topbar-inverse admin-header">
     <div class="am-topbar-brand">
         <a href="javascript:;" class="tpl-logo">
-            <img src="/assets/img/logo.png" alt="">
+            <img src="/assets/img/shoeslogo.png" alt="">
         </a>
     </div>
     <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
@@ -81,6 +81,15 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="/adminController/AdminManageIndex">
+                                <i class="am-icon-angle-right"></i>
+                                <span>账户管理</span>
+                                <i class="tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="tpl-left-nav-item">
                     <!-- 打开状态 a 标签添加 active 即可   -->
@@ -104,6 +113,36 @@
                             <a href="/show_expense_record.html">
                                 <i class="am-icon-angle-right"></i>
                                 <span>消费记录</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-wpforms"></i>
+                        <span>服务管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="/show_service.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>服务信息</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-wpforms"></i>
+                        <span>套餐管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="/show_set_meal.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>套餐信息</span>
                             </a>
                         </li>
                     </ul>
@@ -151,15 +190,68 @@
                                 <th class="table-author am-hide-sm-only">赠送金额</th>
                                 <th class="table-author am-hide-sm-only">办理人</th>
                                 <th class="table-date am-hide-sm-only">日期</th>
+                                <th class="table-type">纠错</th>
                             </tr>
                             </thead>
-                            <tbody><tr><td colspan="8" style="text-align: center;">暂无数据</td></tr></tbody>
+                            <tbody><tr><td colspan="9" style="text-align: center;">暂无数据</td></tr></tbody>
                         </table>
                         <div class="am-cf"><div class="am-fr" id="recharge_recordPage"></div></div>
                     </div>
                 </div>
             </div>
             <div class="tpl-alert"></div>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="delete_recharge_record_model">
+    <div class="am-modal-dialog">
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal" id="delete_recharge_record_form">
+                <fieldset>
+                    <legend>消费纠错</legend>
+                    <div class="am-form-group" id="error_msg" style="color:red;font-size:15px;font-family: 黑体;display: none;"></div>
+                    <div class="am-form-group">
+                        <label for="delete_customerinfoName">客户姓名</label>
+                        <input type="hidden" id="delete_rechargeRecordId" name="rechargeRecordId">
+                        <input type="text" id="delete_customerinfoName" name="customerinfoName" readonly>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="delete_phone">手机号</label>
+                        <input type="text" id="delete_phone" name="phone" readonly>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="delete_setMealName">套餐名称</label>
+                        <input type="text" id="delete_setMealName" name="setMealName" readonly>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="delete_setMealPrice">套餐金额</label>
+                        <input type="text" id="delete_setMealPrice" name="setMealPrice" readonly>
+                    </div>
+                    <div class="delete_expenseMoney">
+                        <label for="delete_rechargeMoney">充值金额</label>
+                        <input type="text" id="delete_rechargeMoney" name="rechargeMoney" readonly>
+                    </div>
+                    <div class="delete_expenseMoney">
+                        <label for="delete_givenPrice">赠送金额</label>
+                        <input type="text" id="delete_givenPrice" name="givenPrice" readonly>
+                    </div>
+                    <div class="delete_expenseMoney">
+                        <label for="delete_verificationCode">验证码</label>
+                        <div>
+                            <a id="verificationCode_img" onclick="flush_verificationCode()" style="display: inline-block;width:120px;height:40px;"><img data-src="verificationCodeController/generate_verifyCode" src="verificationCodeController/generate_verifyCode" /></a>
+                            <input style="display: inline-block;width:75%;" type="text" id="delete_verificationCode" name="verificationCode">
+                        </div>
+                    </div>
+                    <div class="delete_expenseMoney">
+                        <label for="delete_errorCause">纠错原因</label>
+                        <textarea rows="5" id="delete_errorCause" name="errorCause"></textarea>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
         </div>
     </div>
 </div>
@@ -310,18 +402,201 @@
                             recharge_recordtableHtml+="<td class='am-hide-sm-only'>未符合套餐标准</td>";
                         else
                             recharge_recordtableHtml+="<td class='am-hide-sm-only'>"+data.recharge_record[i].set_meal.setMealName+"</td>";
-                        recharge_recordtableHtml+="<td class='am-hide-sm-only'>"+data.recharge_record[i].setMealPrice+"</td><td class='am-hide-sm-only'>"+data.recharge_record[i].givenPrice+"</td><td class='am-hide-sm-only'>"+data.recharge_record[i].admin.adminName+"</td><td class='am-hide-sm-only'>"+data.recharge_record[i].updateDate+"</td></tr>";
+                        recharge_recordtableHtml+="<td class='am-hide-sm-only'>"+data.recharge_record[i].setMealPrice+"</td><td class='am-hide-sm-only'>"+data.recharge_record[i].givenPrice+"</td><td class='am-hide-sm-only'>"+data.recharge_record[i].admin.adminName+"</td><td class='am-hide-sm-only'>"+data.recharge_record[i].updateDate+"</td>";
+                        if("42e92020-10ad-4954-a94a-4e1f71673fda"==data.recharge_record[i].stateId)
+                            recharge_recordtableHtml+="<td>"+data.recharge_record[i].errorCause+"</td>";
+                        else
+                            recharge_recordtableHtml+="<td><button class='am-btn am-btn-default am-btn-xs am-text-danger' data-rechargeRecordId='"+data.recharge_record[i].rechargeRecordId+"' onclick='show_delete_recharge_record_model(this)'><span class='am-icon-trash-o'></span> 纠错</button></td>";
+                        recharge_recordtableHtml+="</tr>";
                     }
                     $("#recharge_recordtable tbody").html(recharge_recordtableHtml);
                 }
                 else
-                    $("#recharge_recordtable tbody").html("<tr><td colspan='8' style='text-align: center;'>暂无数据</td></tr>");
+                    $("#recharge_recordtable tbody").html("<tr><td colspan='9' style='text-align: center;'>暂无数据</td></tr>");
             },
             error:function()
             {
-                $("#recharge_recordtable tbody").html("<tr><td colspan='8' style='text-align: center;'>暂无数据</td></tr>");
+                $("#recharge_recordtable tbody").html("<tr><td colspan='9' style='text-align: center;'>暂无数据</td></tr>");
             }
         });
+    }
+    //纠错
+    function show_delete_recharge_record_model(obj)
+    {
+        var rechargeRecordId=$(obj).attr("data-rechargeRecordId");
+        flush_verificationCode();
+        $.ajax({
+            url:"recharge_recordController/find_recharge_recordByrechargeRecordId",
+            dataType:"json",
+            type:"post",
+            data:{rechargeRecordId:rechargeRecordId},
+            success:function (data)
+            {
+                if(data.result)
+                {
+                    $("#delete_rechargeRecordId").val(data.recharge_record.rechargeRecordId);
+                    $("#delete_customerinfoName").val(data.recharge_record.customer_info.customerinfoName);
+                    $("#delete_phone").val(data.recharge_record.customer_info.phone);
+                    $("#delete_setMealPrice").val(data.recharge_record.setMealPrice);
+                    $("#delete_givenPrice").val(data.recharge_record.givenPrice);
+                    $("#delete_rechargeMoney").val(data.recharge_record.rechargeMoney);
+                    if(null!=data.recharge_record.setMealId&&""!=data.recharge_record.setMealId)
+                        $("#delete_setMealName").val(data.recharge_record.set_meal.setMealName);
+                    else
+                        $("#delete_setMealName").val("未符合套餐标准");
+                    delete_recharge_record();
+                }
+                else
+                    show_alert("提示","抱歉,加载套餐记录信息失败!");
+            },
+            error:function()
+            {
+                show_alert("提示","抱歉,加载套餐记录信息失败!");
+            }
+        });
+    }
+    //删除消费记录
+    function delete_recharge_record()
+    {
+        $("#delete_recharge_record_model").modal({
+            relatedTarget: this,
+            onConfirm: function (e)
+            {
+                var rechargeRecordId=$("#delete_rechargeRecordId").val();
+                var errorCause=$("#delete_errorCause").val();
+                var verificationCode=$("#delete_verificationCode").val();
+                if(null!=verificationCode&&""!=verificationCode)
+                {
+                    $.ajax({
+                        url:"verificationCodeController/check_verificationCode",
+                        dataType:"json",
+                        type:"post",
+                        data:{verificationCode:verificationCode},
+                        success:function(data)
+                        {
+                            if(data)
+                            {
+                                hide_error_msg();
+                                if(null!=errorCause&&""!=errorCause)
+                                {
+                                    $.ajax({
+                                        url:"recharge_recordController/update_recharge_record",
+                                        dataType:"json",
+                                        type:"post",
+                                        data:{rechargeRecordId:rechargeRecordId,errorCause:errorCause},
+                                        success:function(data)
+                                        {
+                                            if(data)
+                                            {
+                                                show_alert("提示","充值记录纠错成功!");
+                                                find_recharge_recordBykeyValueorupdateDate(1);
+                                            }
+                                            else
+                                                show_alert("提示","抱歉,充值记录纠错失败,请重试!");
+                                            clear_delete_recharge_record();
+                                        },
+                                        error:function()
+                                        {
+                                            show_alert("提示","抱歉,充值记录纠错失败,请重试!");
+                                            clear_delete_recharge_record();
+                                        }
+                                    });
+                                }
+                                else
+                                {
+                                    show_alert("警告","纠错原因不能为空,请重新输入!");
+                                    clear_delete_recharge_record();
+                                }
+                            }
+                            else
+                                show_alert("警告","验证码输入错误,请重试!");
+                        },
+                        error:function()
+                        {
+                            show_error_msg("验证码检验失败,请重试!");
+                        }
+                    });
+                }
+                else
+                    show_alert("警告","验证码不能为空,请输入!");
+            },
+            onCancel:function()
+            {
+                clear_delete_recharge_record();
+                hide_error_msg();
+            }
+        });
+    }
+    //当光标离开验证码文本框时校验
+    $("#delete_verificationCode").blur(
+        function()
+        {
+            var verificationCode=$(this).val();
+            if(null!=verificationCode&&""!=verificationCode)
+            {
+                $.ajax({
+                    url:"verificationCodeController/check_verificationCode",
+                    dataType:"json",
+                    type:"post",
+                    data:{verificationCode:verificationCode},
+                    success:function(data)
+                    {
+                        if(data)
+                            hide_error_msg();
+                        else
+                            show_error_msg("验证码输入错误,请重试!");
+                    },
+                    error:function()
+                    {
+                        show_error_msg("验证码检验失败,请重试!");
+                    }
+                });
+            }
+            else
+                show_error_msg("验证码不能为空,请输入!");
+        }
+    );
+    //清除纠错充值记录文本框
+    function clear_delete_recharge_record()
+    {
+        $("#delete_rechargeRecordId").val("");
+        $("#delete_customerinfoName").val("");
+        $("#delete_phone").val("");
+        $("#delete_setMealName").val("");
+        $("#delete_setMealPrice").val("");
+        $("#delete_givenPrice").val("");
+        $("#delete_rechargeMoney").val("");
+        $("#delete_errorCause").val("");
+        $("#delete_verificationCode").val("");
+    }
+    //刷新验证码图片
+    function flush_verificationCode()
+    {
+        var src=$("#verificationCode_img").children("img").attr("data-src");
+        $("#verificationCode_img").children("img").attr("src",src+"?T="+Math.random());
+    }
+    //显示错误信息
+    function show_error_msg(str)
+    {
+        $("#error_msg").css("display","block");
+        $("#error_msg").text(str);
+    }
+    //隐藏错误信息
+    function hide_error_msg()
+    {
+        $("#error_msg").css("display","none");
+        $("#error_msg").text("");
+    }
+    /**
+     * 具有确认按钮的提示框
+     * @param state 状态
+     * @param message 信息
+     */
+    function show_alert(state,message)
+    {
+        $("#my_alert").remove();
+        $("body").append("<div class='am-modal am-modal-alert' tabindex='-1' id='my_alert'><div class='am-modal-dialog'><div class='am-modal-hd'>"+state+"</div><div class='am-modal-bd'>"+message+"</div><div class='am-modal-footer'><span class='am-modal-btn'>确定</span></div></div></div>");
+        $('#my_alert').modal();
     }
 </script>
 </body>

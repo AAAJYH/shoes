@@ -41,10 +41,9 @@ public class customer_infoService
     {
         customer_info customer_info=new customer_info();
         customer_info.setCustomerinfoId(Encryption.getUUID());
-        //String adminAccount=SecurityUtils.getSubject().getPrincipal().toString();
-        //admin admin=adminservice.find_adminByadminAccount(adminAccount);
-        //customer_info.setAdminId(admin.getAdminId());
-        customer_info.setAdminId("25656727-98c2-417f-acae-37e561514bed");
+        String adminAccount=SecurityUtils.getSubject().getPrincipal().toString();
+        admin admin=adminservice.find_adminByadminAccount(adminAccount);
+        customer_info.setAdminId(admin.getAdminId());
         customer_info.setCustomerinfoName(customerinfoName);
         customer_info.setPhone(phone);
         customer_info.setRechargeAmount(rechargeAmount);
@@ -182,10 +181,9 @@ public class customer_infoService
             {
                 recharge_record recharge_record=new recharge_record();
                 recharge_record.setCustomerinfoId(customer_info.getCustomerinfoId());
-                //String adminAccount= SecurityUtils.getSubject().getPrincipal().toString();
-                //admin admin=adminservice.find_adminByadminAccount(adminAccount);
-                //recharge_record.setAdminId(admin.getAdminId());
-                recharge_record.setAdminId("25656727-98c2-417f-acae-37e561514bed");
+                String adminAccount= SecurityUtils.getSubject().getPrincipal().toString();
+                admin admin=adminservice.find_adminByadminAccount(adminAccount);
+                recharge_record.setAdminId(admin.getAdminId());
                 recharge_record.setRechargeMoney(rechargeAmount);
                 if(null!=set_meal)
                 {
@@ -225,10 +223,9 @@ public class customer_infoService
                 if(0<customer_infodao.update_customer_info(customer_info))
                 {
                     expense_record expense_record=new expense_record();
-                    //String adminAccount=SecurityUtils.getSubject().getPrincipal().toString();
-                    //admin admin=adminservice.find_adminByadminAccount(adminAccount);
-                    //expense_record.setAdminId(admin.getAdminId());
-                    expense_record.setAdminId("25656727-98c2-417f-acae-37e561514bed");
+                    String adminAccount=SecurityUtils.getSubject().getPrincipal().toString();
+                    admin admin=adminservice.find_adminByadminAccount(adminAccount);
+                    expense_record.setAdminId(admin.getAdminId());
                     expense_record.setServiceId(serviceId);
                     expense_record.setServiceName(service.getServiceName());
                     expense_record.setServicePrice(service.getServicePrice());

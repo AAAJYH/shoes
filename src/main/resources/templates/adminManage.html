@@ -36,7 +36,7 @@
     <header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
             <a href="javascript:;" class="tpl-logo">
-                <img src="/assets/img/logo.png" alt="">
+                <img src="/assets/img/shoeslogo.png" alt="">
             </a>
         </div>
         <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
@@ -190,12 +190,37 @@
                                     </tr>
                                     </thead>
                                     <tbody id="content">
+                                    <!--<tr>-->
+                                        <!--<td><input type="checkbox"></td>-->
+                                        <!--<td>1</td>-->
+                                        <!--<td><a href="#">Business management</a></td>-->
+                                        <!--<td>default</td>-->
+                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
+                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
+                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
+                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
+                                        <!--<td>-->
+                                            <!--<div class="am-btn-toolbar">-->
+                                                <!--<div class="am-btn-group am-btn-group-xs">-->
+                                                    <!--<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>-->
+                                                    <!--<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
                                     </tbody>
                                 </table>
                                 <div class="am-cf">
 
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination" id="paging_toolbar">
+                                            <li class="am-disabled" id="prev"><a href="#">«</a></li>
+                                            <li class="am-active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#">»</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -373,7 +398,6 @@
                 var username = /^[\u4E00-\u9FA5A-Za-z]+$/; //姓名：中文和英文
                 var adminAuthority=$("#adminAuthority").val();
                 var adminName=$("#adminName").val();
-                var adminPhone=$("#adminPhone").val();
                 if(url=="/adminController/add"){ //添加
                     var account=$("#account").val();
                     var pwd=$("#password").val();

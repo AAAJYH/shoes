@@ -5,6 +5,7 @@ import aaa.entity.recharge_record;
 import aaa.service.recharge_recordService;
 import aaa.util.doubleSum;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -65,4 +66,29 @@ public class recharge_recordController {
         return recharge_recordservice.rechargeStatistics(page, rows, customName);
     }
 
+
+    /**
+     * 根据充值记录编号查询充值记录
+     * @param rechargeRecordId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("find_recharge_recordByrechargeRecordId")
+    public Map<String,Object> find_recharge_recordByrechargeRecordId(String rechargeRecordId)
+    {
+        return recharge_recordservice.find_recharge_recordByrechargeRecordId(rechargeRecordId);
+    }
+
+    /**
+     * 修改充值记录
+     * @param rechargeRecordId
+     * @param errorCause
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("update_recharge_record")
+    public boolean update_recharge_record(String rechargeRecordId,String errorCause)
+    {
+        return recharge_recordservice.update_recharge_record(rechargeRecordId,errorCause);
+    }
 }
