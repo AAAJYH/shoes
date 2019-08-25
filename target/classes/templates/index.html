@@ -1,0 +1,734 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>首页</title>
+    <meta name="description" content="首页">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <script src="/assets/js/echarts.min.js"></script>
+    <script src="/js/jquery-1.11.0.min.js"></script>
+</head>
+<body data-type="index">
+
+    <!--顶部-->
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+            <a href="javascript:;" class="tpl-logo">
+                <img src="/assets/img/shoeslogo.png" alt="">
+            </a>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse" >
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+                <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+                <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                    <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+                        <span class="tpl-header-list-user-nick">
+                            <shiro:user>
+                                <shiro:principal/>
+                            </shiro:user>
+                        </span>
+                        <span class="tpl-header-list-user-ico"></span>👨
+                    </a>
+                    <ul class="am-dropdown-content">
+                        <li id="updatePwd"><a href="#"><span class="am-icon-cog"></span> 修改密码</a></li>
+                        <li><a href="/adminController/Exit"><span class="am-icon-power-off"></span> 退出</a></li>
+                    </ul>
+                </li>
+                <li><a href="/adminController/Exit" class="tpl-header-list-link" style="background:#E1E3EA;"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+
+        <!--左侧列表-->
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+
+                    <li class="tpl-left-nav-item">
+                        <a href="/adminController/SuccessIndex" class="nav-link active">
+                            <i class="am-icon-home"></i>
+                            <span>首页</span>
+                        </a>
+                    </li>
+
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-user"></i>
+                            <span>管理员</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i> <!--新消息提示-->
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu">
+                            <li>
+                                <a href="/adminController/AdminManageIndex">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>账户管理</span>
+                                    <i class="tpl-left-nav-content-ico am-fr"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-table"></i>
+                            <span>客户管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu">
+                            <li>
+                                <!-- 打开状态 a 标签添加 active 即可   -->
+                                <a href="/show_customer_info.html" class="active">
+                                <!-- 打开状态 a 标签添加 active 即可   -->
+                                <a href="/show_customer_info.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>客户信息</span>
+                                </a>
+                                <a href="/show_recharge_record.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>充值记录</span>
+                                    <span>充值记录</span>
+                                </a>
+                                <a href="/show_expense_record.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>消费记录</span>
+                                </a>
+                                <a href="/show_expense_record.html">
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-wpforms"></i>
+                            <span>服务管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu">
+                            <li>
+                                <a href="/show_service.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>消费记录</span>
+                                    <span>服务信息</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-wpforms"></i>
+                            <span>套餐管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu">
+                            <li>
+                                <a href="/show_set_meal.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>套餐信息</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tpl-content-wrapper">
+
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li class="am-active">内容</li>
+            </ol>
+
+            <!--新消息、收视率-->
+            <div class="row">
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat blue">
+                        <div class="visual">
+                            <i class="am-icon-bar-chart-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number" id="current_day_income">  </div>
+                            <div class="desc"> 今日充值金额 </div>
+                            <script>
+                                $(function(){
+                                   var myDate=new Date();
+                                   $.ajax({
+                                      url:'/recharge_recordController/currentDayIncome',
+                                      type:'post',
+                                       data:{
+                                           date:myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()
+                                       },
+                                      async:false,
+                                      dateType:'text',
+                                      success:function(data){
+                                        $("#current_day_income").text(" "+data+" ");
+                                      }
+                                   });
+                                });
+                            </script>
+                        </div>
+                        <a class="more" href="#"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat red">
+                        <div class="visual">
+                            <i class="am-icon-bar-chart-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number" id="current_day_expense">  </div>
+                            <div class="desc"> 今日消费金额 </div>
+                        </div>
+                        <script>
+                            $(function(){
+                                var myDate=new Date();
+                                $.ajax({
+                                    url:'/expense_recordController/currentDayExpense',
+                                    type:'post',
+                                    data:{
+                                        date:myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()
+                                    },
+                                    async:false,
+                                    dateType:'text',
+                                    success:function(data){
+                                        $("#current_day_expense").text(" "+data+" ");
+                                    }
+                                });
+                            });
+                        </script>
+                        <a class="more" href="#"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat green">
+                        <div class="visual">
+                            <i class="am-icon-bar-chart-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number" id="all_day_incomoe">  </div>
+                            <div class="desc"> 全天充值金额 </div>
+                            <script>
+                                $(function(){
+                                    var myDate=new Date();
+                                    $.ajax({
+                                        url:'/recharge_recordController/currentDayIncome',
+                                        type:'post',
+                                        data:{
+                                            date:""
+                                        },
+                                        async:false,
+                                        dateType:'text',
+                                        success:function(data){
+                                            $("#all_day_incomoe").text(" "+data+" ");
+                                        }
+                                    });
+                                });
+                            </script>
+                        </div>
+                        <a class="more" href="#"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat purple">
+                        <div class="visual">
+                            <i class="am-icon-bar-chart-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number" id="all_day_expense">  </div>
+                            <div class="desc"> 全天消费金额 </div>
+                            <script>
+                                $(function(){
+                                    var myDate=new Date();
+                                    $.ajax({
+                                        url:'/expense_recordController/currentDayExpense',
+                                        type:'post',
+                                        data:{
+                                            date:""
+                                        },
+                                        async:false,
+                                        dateType:'text',
+                                        success:function(data){
+                                            $("#all_day_expense").text(" "+data+" ");
+                                        }
+                                    });
+                                });
+                            </script>
+                        </div>
+                        <a class="more" href="#"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="am-u-md-6 am-u-sm-12 row-mb">
+                    <div class="tpl-portlet">
+                        <div class="tpl-portlet-title">
+                            <div class="tpl-caption font-red ">
+                                <i class="am-icon-bar-chart"></i>
+                                <span>充值统计</span>
+                            </div>
+                            <div class="actions">
+                                    <div class="tpl-portlet-input tpl-fz-ml">
+                                        <div class="portlet-input input-small input-inline">
+                                            <div class="input-icon right">
+                                                <i class="am-icon-search"></i>
+                                                <input type="text" id="search1" class="form-control form-control-solid" placeholder="客户姓名 . . .">
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tpl-scrollable">
+                            <!--<div class="number-stats">-->
+                                <!--<div class="stat-number am-fl am-u-md-6">-->
+                                    <!--<div class="title am-text-right">总金额 </div>-->
+                                    <!--<div class="number am-text-right am-text-warning"> 2460 </div>-->
+                                <!--</div>-->
+                                <!--<div class="stat-number am-fr am-u-md-6">-->
+                                    <!--<div class="title">总次数 </div>-->
+                                    <!--<div class="number am-text-success"> 2460 </div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <table class="am-table tpl-table">
+                                <thead>
+                                    <tr class="tpl-table-uppercase">
+                                        <th>客户姓名</th>
+                                        <th>充值总金额</th>
+                                        <th>赠送总金额</th>
+                                        <th>次数</th>
+                                        <th>金额占比</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="content1">
+                                    <!--<tr>-->
+                                        <!--<td>-->
+                                            <!--<i class="am-icon-male"></i>-->
+                                            <!--<a class="user-name" href="###">禁言小张</a>-->
+                                        <!--</td>-->
+                                        <!--<td>￥3213</td>-->
+                                        <!--<td>0</td>-->
+                                        <!--<td>65</td>-->
+                                        <!--<td class="font-green bold">&nbsp;&nbsp;&nbsp;26%</td>-->
+                                    <!--</tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="am-cf" >
+                            <div class="am-fr" >
+                                <ul class="am-pagination tpl-pagination" id="paging_toolbar1">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    var page1=1;
+                    var rows1=9;
+                    var customName1="";
+                    $(function(){
+
+                        loadRechargeDate(page1,rows1,"");
+
+                        /**
+                         * 加载充值数据
+                         * */
+                        function loadRechargeDate(page1,rows1,clientName){
+                            $.ajax({
+                               url:'/recharge_recordController/rechargeStatistics',
+                               type:'post',
+                               asyns:false,
+                               data:{
+                                   page:page1,
+                                   rows:rows1,
+                                   customName:customName1
+                               },
+                               dataType:'json',
+                               success:function(data){
+                                   var total=data.total;
+                                   var rows=data.rows;
+                                   $("#content1").empty();
+                                   var myDate=new Date();
+                                   var rechargeSumMoney=0;
+                                   $.ajax({
+                                       url:'/recharge_recordController/currentDayIncome',
+                                       type:'post',
+                                       data:{
+                                           date:""
+                                       },
+                                       async:false,
+                                       dateType:'text',
+                                       success:function(data){
+                                           rechargeSumMoney=data;
+                                       }
+                                   });
+                                   for(var i=0;i<rows.length;i++){
+                                           $("#content1").append("<tr>\n" +
+                                               "                                        <td>\n" +
+                                               "                                            <i class=\"am-icon-male\"></i>\n" +
+                                               "                                            <a class=\"user-name\" href=\"###\">"+rows[i].customName+"</a>\n" +
+                                               "                                        </td>\n" +
+                                               "                                        <td>￥"+rows[i].rechargeMoney+"</td>\n" +
+                                               "                                        <td>"+rows[i].givenSumPrice+"</td>\n" +
+                                               "                                        <td>"+rows[i].rechargeCount+"</td>\n" +
+                                               "                                        <td class=\"font-green bold\">&nbsp;"+(rows[i].rechargeMoney/rechargeSumMoney*100).toFixed(2)+"%</td>\n" +
+                                               "                                    </tr>");
+                                   }
+                                   //初始化分页栏
+                                   $("#paging_toolbar1").empty();
+                                   var pageNumber=Math.ceil(total/rows1);
+                                   $("#paging_toolbar1").append("<li id=\"prev\"><a href=\"javascript:;\">«</a></li>");
+                                   for(var i=1;i<=Math.ceil(total/rows1);i++){
+                                       if(page1!=i){
+                                           $("#paging_toolbar1").append("<li class='page page1'><a href=\"javascript:;\">"+i+"</a></li>");
+                                       }else{
+                                           $("#paging_toolbar1").append("<li class=\"am-active page\"><a href=\"javascript:;\">"+i+"</a></li>");
+                                       }
+                                   }
+                                   $("#paging_toolbar1").append("<li id='next'><a href=\"javascript:;\">»</a></li>");
+
+                                   $(".page1").click(function(){
+                                       page1=$(this).text();
+                                       loadRechargeDate(page1,rows1,customName1);
+                                   });
+
+                                   /**
+                                    * 上一页
+                                    * */
+                                   $("#prev").click(function(){
+                                       if(page1-1==0){
+                                           page1=pageNumber;
+                                       }else{
+                                           page1--;
+                                       }
+                                       loadRechargeDate(page1,rows1,customName1);
+                                   });
+
+                                   /**
+                                    * 下一页
+                                    * */
+                                   $("#next").click(function(){
+                                       if(page1+1>pageNumber){
+                                           page1=1;
+                                       }else{
+                                           page1++;
+                                       }
+                                       loadRechargeDate(page1,rows1,customName1);
+                                   });
+
+                               }
+                            });
+
+                        }
+
+                        /**
+                         * 充值统计：输入事件
+                         */
+                        $("#search1").keyup(function(){
+                            customName1=$("#search1").val();
+                            loadRechargeDate(page1,rows1,customName1);
+                        });
+
+                    });
+                </script>
+
+                <div class="am-u-md-6 am-u-sm-12 row-mb">
+                    <div class="tpl-portlet">
+                        <div class="tpl-portlet-title">
+                            <div class="tpl-caption font-red ">
+                                <i class="am-icon-bar-chart"></i>
+                                <span>消费统计</span>
+                            </div>
+                            <div class="actions">
+                                <div class="tpl-portlet-input tpl-fz-ml">
+                                    <div class="portlet-input input-small input-inline">
+                                        <div class="input-icon right">
+                                            <i class="am-icon-search"></i>
+                                            <input type="text" id="search2" class="form-control form-control-solid" placeholder="客户姓名 . . .">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tpl-scrollable">
+                            <!--<div class="number-stats">-->
+                            <!--<div class="stat-number am-fl am-u-md-6">-->
+                            <!--<div class="title am-text-right">总金额 </div>-->
+                            <!--<div class="number am-text-right am-text-warning"> 2460 </div>-->
+                            <!--</div>-->
+                            <!--<div class="stat-number am-fr am-u-md-6">-->
+                            <!--<div class="title">总次数 </div>-->
+                            <!--<div class="number am-text-success"> 2460 </div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+
+                            <table class="am-table tpl-table">
+                                <thead>
+                                <tr class="tpl-table-uppercase">
+                                    <th>客户姓名</th>
+                                    <th>消费总金额</th>
+                                    <th>剩余金额</th>
+                                    <th>消费次数</th>
+                                    <th>消费占比</th>
+                                </tr>
+                                </thead>
+                                <tbody id="content2">
+                                <!--<tr>-->
+                                <!--<td>-->
+                                <!--<i class="am-icon-male"></i>-->
+                                <!--<a class="user-name" href="###">禁言小张</a>-->
+                                <!--</td>-->
+                                <!--<td>￥3213</td>-->
+                                <!--<td>0</td>-->
+                                <!--<td>65</td>-->
+                                <!--<td class="font-green bold">&nbsp;&nbsp;&nbsp;26%</td>-->
+                                <!--</tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="am-cf" >
+                            <div class="am-fr" >
+                                <ul class="am-pagination tpl-pagination" id="paging_toolbar2">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    var page2=1;
+                    var rows2=9;
+                    var customName2="";
+                    $(function(){
+
+                        loadExpenseDate(page2,rows2,"");
+
+                        /**
+                         * 加载充值数据
+                         * */
+                        function loadExpenseDate(page2,rows2,clientName2){
+                            $.ajax({
+                                url:'/expense_recordController/expenseStatistics',
+                                type:'post',
+                                asyns:false,
+                                data:{
+                                    page:page2,
+                                    rows:rows2,
+                                    customName:customName2
+                                },
+                                dataType:'json',
+                                success:function(data){
+                                    var total=data.total;
+                                    var rows=data.rows;
+                                    $("#content2").empty();
+                                    var myDate=new Date();
+                                    var expenseSumMoney=0;
+                                    $.ajax({
+                                        url:'/expense_recordController/currentDayExpense',
+                                        type:'post',
+                                        data:{
+                                            date:""
+                                        },
+                                        async:false,
+                                        dateType:'text',
+                                        success:function(data){
+                                            expenseSumMoney=data;
+                                        }
+                                    });
+                                    for(var i=0;i<rows.length;i++){
+                                        $("#content2").append("<tr>\n" +
+                                            "                                        <td>\n" +
+                                            "                                            <i class=\"am-icon-male\"></i>\n" +
+                                            "                                            <a class=\"user-name\" href=\"###\">"+rows[i].customerinfoName+"</a>\n" +
+                                            "                                        </td>\n" +
+                                            "                                        <td>￥"+rows[i].expenseMoney+"</td>\n" +
+                                            "                                        <td>"+rows[i].balance+"</td>\n" +
+                                            "                                        <td>"+rows[i].expenseCount+"</td>\n" +
+                                            "                                        <td class=\"font-green bold\">&nbsp;"+(rows[i].expenseMoney/expenseSumMoney*100).toFixed(2)+"%</td>\n" +
+                                            "                                    </tr>");
+                                    }
+                                    //初始化分页栏
+                                    $("#paging_toolbar2").empty();
+                                    var pageNumber=Math.ceil(total/rows1);
+                                    $("#paging_toolbar2").append("<li id=\"prev2\"><a href=\"javascript:;\">«</a></li>");
+                                    for(var i=1;i<=Math.ceil(total/rows1);i++){
+                                        if(page2!=i){
+                                            $("#paging_toolbar2").append("<li class='page page2'><a href=\"javascript:;\">"+i+"</a></li>");
+                                        }else{
+                                            $("#paging_toolbar2").append("<li class=\"am-active page\"><a href=\"javascript:;\">"+i+"</a></li>");
+                                        }
+                                    }
+                                    $("#paging_toolbar2").append("<li id='next2'><a href=\"javascript:;\">»</a></li>");
+
+                                    $(".page2").click(function(){
+                                       page1=$(this).text();
+                                        loadExpenseDate(page1,rows1,customName1);
+                                    });
+
+                                    /**
+                                     * 上一页
+                                     * */
+                                    $("#prev2").click(function(){
+                                        if(page2-1==0){
+                                            page2=pageNumber;
+                                        }else{
+                                            page2--;
+                                        }
+                                        loadExpenseDate(page1,rows1,customName1);
+                                    });
+
+                                    /**
+                                     * 下一页
+                                     * */
+                                    $("#next2").click(function(){
+                                        if(page2+1>pageNumber){
+                                            page2=1;
+                                        }else{
+                                            page2++;
+                                        }
+                                        loadExpenseDate(page2,rows2,customName2);
+                                    });
+
+                                }
+                            });
+
+                        }
+
+                        /**
+                         * 充值统计：输入事件
+                         */
+                        $("#search2").keyup(function(){
+                            customName2=$("#search2").val();
+                            loadExpenseDate(page2,rows2,customName2);
+                        });
+
+                    });
+                </script>
+            </div>
+        </div>
+
+    </div>
+
+    <!--修改密码-->
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="consumption_model">
+        <div class="am-modal-dialog">
+            <div class="am-modal-bd">
+                <form class="am-form am-form-horizontal" id="consumption_form">
+                    <fieldset>
+                        <legend>修改密码</legend>
+                        <div  class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">原密码</label>
+                            <div class="am-u-sm-9">
+                                <input name='oldPwd' type="password" id="oldPwd" placeholder="请输入">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">新密码</label>
+                            <div class="am-u-sm-9">
+                                <input name='newPwd' type="password" id="newPwd" placeholder="请输入6-16位数密码（数字加字母）">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" id="subUpdatePwd" data-am-modal-confirm>提交</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/amazeui.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+</body>
+
+</html>
+<script>
+    $(function(){
+        /**
+         *  清空修改密码form表单，并关闭dialog
+         * */
+        function clearFormCloseDialog(){
+            //清空表单
+            $("#oldPwd").val("");
+            $("#newPwd").val("");
+            //关闭dialog
+            $("#consumption_model").modal('close');
+        }
+
+
+        /**
+         * 修改密码点击事件
+         */
+        $("#updatePwd").click(function(){
+            $('#consumption_model').modal({
+                relatedTarget: this,
+                onCancel: function(e) {
+                    clearFormCloseDialog();
+                }
+            });
+        });
+
+        /**
+         * 修改密码
+         */
+        $("#subUpdatePwd").click(function(){
+            var pPattern=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/; //密码：6-16位字母加数字
+            var oldPwd=$("#oldPwd").val();
+            var newPwd=$("#newPwd").val();
+            if(oldPwd==""){
+                alert("请输入原密码");
+                return false;
+            }else if(!pPattern.test(newPwd)){
+                alert("新密码请输入6-16位字母加数字");
+                return false;
+            }
+            $.ajax({
+                url:'/adminController/updateAdminPassword',
+                type:'post',
+                data:{
+                    oldPwd:oldPwd,
+                    newPwd:newPwd
+                },
+                dataType:'text',
+                success:function(data){
+                    alert(data);
+                    if(data=="修改成功，请重新登陆"){
+                        window.location.href="/adminController/Exit";
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>

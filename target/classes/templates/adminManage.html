@@ -1,0 +1,783 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>账号管理</title>
+    <meta name="description" content="账号管理">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <script src="/assets/js/echarts.min.js"></script>
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <style>
+        #sub:hover{
+            cursor:pointer;
+        }
+        #sub{
+            display: block;
+            width:99%;
+            height:80%;
+        }
+    </style>
+</head>
+
+<body data-type="generalComponents" >
+
+    <!--顶部-->
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+            <a href="javascript:;" class="tpl-logo">
+                <img src="/assets/img/shoeslogo.png" alt="">
+            </a>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse" >
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+                <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+                <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                    <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+                        <span class="tpl-header-list-user-nick">
+                            <shiro:user>
+                                <shiro:principal/>
+                            </shiro:user>
+                        </span>
+                        <span class="tpl-header-list-user-ico"></span>👨
+                    </a>
+                    <ul class="am-dropdown-content">
+                        <li id="updatePwd"><a href="#"><span class="am-icon-cog"></span> 修改密码</a></li>
+                        <li><a href="/adminController/Exit"><span class="am-icon-power-off"></span> 退出</a></li>
+                    </ul>
+                </li>
+                <li><a href="/adminController/Exit" class="tpl-header-list-link" style="background:#E1E3EA;"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+        <!--左侧列表-->
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+
+                    <li class="tpl-left-nav-item">
+                        <a href="/adminController/SuccessIndex" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-home"></i>
+                            <span>首页</span>
+                        </a>
+                    </li>
+
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-user"></i>
+                            <span>管理员</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i> <!--新消息提示-->
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                            <li>
+                                <a href="/adminController/AdminManageIndex" class="active">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>账户管理</span>
+                                    <i class="tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-table"></i>
+                            <span>客户管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu">
+                            <li>
+                                <!-- 打开状态 a 标签添加 active 即可   -->
+                                <a href="/show_customer_info.html" class="active">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>客户信息</span>
+                                </a>
+                                <a href="/show_recharge_record.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>充值记录</span>
+                                </a>
+                                <a href="/show_expense_record.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>消费记录</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="tpl-content-wrapper">
+            <ol class="am-breadcrumb">
+                <li><a href="javascript:;" class="am-icon-home">管理员</a></li>
+                <li><a href="javascript:;">账户管理</a></li>
+                <li class="am-active">内容</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-3">
+                            <div class="am-btn-toolbar">
+                            <shiro:hasAnyRoles name = "超级管理员">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button type="button" class="am-btn am-btn-default am-btn-success add"><span class="am-icon-plus"></span> 新增</button>
+                                </div>
+                            </shiro:hasAnyRoles>
+                                <shiro:lacksRole name = "超级管理员">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <button type="button" class="am-btn am-btn-default am-btn-success noadd"><span class="am-icon-plus"></span> 新增</button>
+                                        <script>
+                                            $(".noadd").click(function(){
+                                               alert("抱歉，你没有新增权限");
+                                            });
+                                        </script>
+                                    </div>
+                                </shiro:lacksRole>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-12 am-u-md-3">
+                            <div class="am-form-group">
+                                <select data-am-selected="{btnSize: 'sm'}" id="selectState">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-12 am-u-md-3">
+                            <div class="tpl-portlet-input tpl-fz-ml">
+                                <div class="portlet-input input-small input-inline">
+                                    <div class="input-icon right">
+                                        <i class="am-icon-search"></i>
+                                        <input type="text" id="search" class="form-control form-control-solid" placeholder="搜索...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                    <tr>
+                                        <th class="table-id">ID</th>
+                                        <th class="table-title">姓名</th>
+                                        <th class="table-type">账号</th>
+                                        <th >联系电话</th>
+                                        <th class="table-date am-hide-sm-only">权限</th>
+                                        <th class="table-date am-hide-sm-only">状态</th>
+                                        <th class="table-date am-hide-sm-only">修改人</th>
+                                        <th class="table-date am-hide-sm-only">创建时间</th>
+                                        <th class="table-set">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="content">
+                                    <!--<tr>-->
+                                        <!--<td><input type="checkbox"></td>-->
+                                        <!--<td>1</td>-->
+                                        <!--<td><a href="#">Business management</a></td>-->
+                                        <!--<td>default</td>-->
+                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
+                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
+                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
+                                        <!--<td class="am-hide-sm-only">2014年9月4日 7:28:47</td>-->
+                                        <!--<td>-->
+                                            <!--<div class="am-btn-toolbar">-->
+                                                <!--<div class="am-btn-group am-btn-group-xs">-->
+                                                    <!--<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>-->
+                                                    <!--<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+                                    </tbody>
+                                </table>
+                                <div class="am-cf">
+
+                                    <div class="am-fr">
+                                        <ul class="am-pagination tpl-pagination" id="paging_toolbar">
+                                            <li class="am-disabled" id="prev"><a href="#">«</a></li>
+                                            <li class="am-active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#">»</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--右下角提示信息-->
+    <style type="text/css">
+        #hint{
+            width:30%;
+            height:auto;
+            position:absolute;
+            right:1.3%;
+            top:0%;
+            padding:0px;
+        }
+    </style>
+    <div id="hint">
+        <script>
+            <!--动态设置提示框的未知-->
+            $(function(){
+                // $(window).scroll(function(){
+                //     var scrollTopHeight=$(document).scrollTop();    //滚动条距顶部的高度
+                //     var documentHeight= document.body.clientHeight; //可见文档高度
+                //         $("#hint").css("top",scrollTopHeight+documentHeight*0.8+"px");
+                // }) ;
+            });
+        </script>
+    </div>
+
+    <!--修改密码-->
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="consumption_model">
+        <div class="am-modal-dialog">
+            <div class="am-modal-bd">
+                <form class="am-form am-form-horizontal" id="consumption_form">
+                    <fieldset>
+                        <legend>修改密码</legend>
+                        <div  class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">原密码</label>
+                            <div class="am-u-sm-9">
+                             <input name='oldPwd' type="password" id="oldPwd" placeholder="请输入">
+                             </div>
+                           </div>
+                       <div class="am-form-group">
+                       <label class="am-u-sm-3 am-form-label">新密码</label>
+                        <div class="am-u-sm-9">
+                        <input name='newPwd' type="password" id="newPwd" placeholder="请输入6-16位数密码（数字加字母）">
+                       </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" id="subUpdatePwd" data-am-modal-confirm>提交</span>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/amazeui.min.js"></script>
+    <script src="/assets/js/iscroll.js"></script>
+    <script src="/assets/js/app.js"></script>
+</body>
+
+</html>
+<script type="text/javascript">
+
+    var stateId=""; //状态id
+    var condition=""; //条件
+    var page=1;
+    var rows=3;
+    var url="";
+
+    //表单信息
+    function formInfo(adminId,adminName,adminAuthority,adminPhone){
+        var str="<input type='hidden' id='adminId' name='adminId' value='"+adminId+"'><div style='margin-left:8%;' class=\"am-g tpl-amazeui-form\"><div class=\"am-u-sm-12 am-u-md-9\"><form class=\"am-form am-form-horizontal\">\n" +
+            "                            <div id='accountDiv' class=\"am-form-group\">\n" +
+            "                                <label for=\"user-name\" class=\"am-u-sm-3 am-form-label\">账号</label>\n" +
+            "                                <div class=\"am-u-sm-9\">\n" +
+            "                                    <input name='adminName' type=\"text\" id=\"account\" placeholder=\"请输入4-16位数账号（字母，数字，下划线，减号）\">\n" +
+            "                                </div>\n" +
+            "                            </div>" +
+            "                            <div id='pwdDiv' class=\"am-form-group\">\n" +
+            "                                <label for=\"user-name\" class=\"am-u-sm-3 am-form-label\">密码</label>\n" +
+            "                                <div class=\"am-u-sm-9\">\n" +
+            "                                    <input name='adminName' type=\"password\" id=\"password\" placeholder=\"请输入6-16位数密码（数字加字母）\">\n" +
+            "                                </div>\n" +
+            "                            </div>" +
+            "                            <div class=\"am-form-group\">\n" +
+            "                                <label for=\"user-name\" class=\"am-u-sm-3 am-form-label\">姓名</label>\n" +
+            "                                <div class=\"am-u-sm-9\">\n" +
+            "                                    <input value='"+adminName+"' name='adminName' type=\"text\" id=\"adminName\" placeholder=\"请输入中文名称或英文名称\">\n" +
+            "                                </div>\n" +
+            "                            </div>" +
+            "                            <div class=\"am-form-group\">\n" +
+            "                                <label for=\"user-name\" class=\"am-u-sm-3 am-form-label\">手机号</label>\n" +
+            "                                <div class=\"am-u-sm-9\">\n" +
+            "                                    <input value='"+adminPhone+"' name='adminPhone' type=\"text\" id=\"adminPhone\" placeholder=\"请输入正确的手机号\">\n" +
+            "                                </div>\n" +
+            "                            </div>" +
+            "<div class=\"am-form-group\">\n" +
+            "                                <label for=\"user-phone\" class=\"am-u-sm-3 am-form-label\">权限<span class=\"tpl-form-line-small-title\"></span></label>\n" +
+            "                                <div class=\"am-u-sm-9\">\n" +
+            "                                    <select id='adminAuthority' name='adminAuthority' data-am-selected=\"{searchBox: 1}\">\n";
+        if(adminAuthority=="超级管理员"){
+            str+="                                        <option value=\"请选择\">请选择</option>\n" +
+                "                                        <option value=\"超级管理员\" selected>超级管理员</option>\n" +
+                "                                        <option value=\"普通管理员\">普通管理员</option>\n" +
+                "                                    </select>\n" +
+                "                                </div>\n" +
+                "                            </div>" +
+                "                        </form></div></div>\n";
+        }else if(adminAuthority=="普通管理员"){
+            str+="                                        <option value=\"请选择\">请选择</option>\n" +
+                "                                        <option value=\"超级管理员\">超级管理员</option>\n" +
+                "                                        <option value=\"普通管理员\" selected>普通管理员</option>\n" +
+                "                                    </select>\n" +
+                "                                </div>\n" +
+                "                            </div>" +
+                "                        </form></div></div>\n";
+        }else{
+            str+="                                        <option value=\"请选择\">请选择</option>\n" +
+                "                                        <option value=\"超级管理员\">超级管理员</option>\n" +
+                "                                        <option value=\"普通管理员\">普通管理员</option>\n" +
+                "                                    </select>\n" +
+                "                                </div>\n" +
+                "                            </div>" +
+                "                        </form></div></div>\n";
+        }
+        return str;
+    }
+
+
+    /**
+     * 提示信息
+     * */
+    function prompt(str){
+        $('.am-alert').alert('close');
+        $("#hint").append("<div class=\"am-alert\" data-am-alert>\n" +
+            "            <button type=\"button\" class=\"am-close\">&times;</button>\n" +
+            "            <p>"+str+"</p>\n" +
+        "        </div>");
+        $('.am-alert').alert();
+    }
+
+    $(function(){
+
+        /**
+         * 具有确认按钮的提示框
+         * @param state 状态
+         * @param message 信息
+         */
+        function show_alert(state,message)
+        {
+            $("#my_alert").remove();
+            $("body").append("<div class='am-modal am-modal-alert' tabindex='-1' id='my_alert'><div style='width:650px;'  class='am-modal-dialog'><div class='am-modal-hd'>"+state+"</div><div class='am-modal-bd'>"+message+"</div><div class=\"am-modal-footer\">\n" +
+                "            <span class=\"am-modal-btn\" id='cancel'>取消</span>\n" +
+                "            <span id='sub'>提交</span>\n" +
+                "        </div></div></div>");
+            $('#my_alert').modal();
+            $("#sub").click(function(){
+                var username = /^[\u4E00-\u9FA5A-Za-z]+$/; //姓名：中文和英文
+                var adminAuthority=$("#adminAuthority").val();
+                var adminName=$("#adminName").val();
+                if(url=="/adminController/add"){ //添加
+                    var account=$("#account").val();
+                    var pwd=$("#password").val();
+                    //正则表达式
+                    var uPattern = /^[a-zA-Z0-9_-]{4,16}$/; //账号：字母，数字，下划线，减号
+                    var pPattern=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/; //密码：6-16位字母加数字
+                    //判断账户是否存在
+                    var rs=false;
+                    $.ajax({
+                        url:"/adminController/checkAccount",
+                        type:'post',
+                        async:false,
+                        data:{
+                            account:account,
+                        },
+                        dataType:'text',
+                        success:function(data) {
+                            if(data=="true"){
+                                rs=true;
+                            }
+                        }
+                    });
+                    if(rs){
+                        alert("账号已存在，请更改！");
+                        return false;
+                    }else if(!uPattern.test(account)){
+                        alert("请输入4-16位数账号（字母，数字，下划线，减号）！");
+                        return false;
+                    }else if(!pPattern.test(pwd)){
+                        alert("请输入6-16位数密码（数字加字母）！");
+                        return false;
+                    }else if(!username.test(adminName)){
+                        alert("请输入英文名称或中文！");
+                        return false;
+                    }else if(!(/^1[34578]\d{9}$/.test(adminPhone))){
+                        alert("手机号码有误，请重填");
+                        return false;
+                    } else if(adminAuthority=="请选择"){
+                        alert("请选择管理员权限");
+                        return false;
+                    }
+                    $.ajax({
+                        url:url,
+                        type:'post',
+                        async:false,
+                        data:{
+                            adminName:adminName,
+                            adminAuthority:adminAuthority,
+                            adminAccount:account,
+                            adminPassword:pwd,
+                            adminPhone:adminPhone
+                        },
+                        dataType:'text',
+                        success:function(data){
+                            var rs="账户 添加成功";
+                            if(data>0){
+                                loadData(page,rows,stateId,condition);
+                            }else{
+                                rs="账户 添加失败";
+                            }
+                            //提示框追加信息，并显示
+                            prompt(rs);
+                            //关闭表单
+                            $('#my_alert').css("display","none");
+                            $(".am-dimmer").css("display","none");
+                        }
+                    });
+                } else if(url=="/adminController/update"){ //修改
+                    var adminId=$("#adminId").val();
+                    if(!username.test(adminName)){
+                        alert("请输入中文名或英文名！");
+                        return false;
+                    }else if(!(/^1[34578]\d{9}$/.test(adminPhone))){
+                        alert("手机号码有误，请重填");
+                        return false;
+                    } else if(adminAuthority=="请选择"){
+                        alert("请选择管理员权限");
+                        return false;
+                    }
+                    $.ajax({
+                        url:url,
+                        type:'post',
+                        async:false,
+                        data:{
+                            adminId:adminId,
+                            adminName:adminName,
+                            adminAuthority:adminAuthority,
+                            adminPhone:adminPhone
+                        },
+                        dataType:'text',
+                        success:function(data){
+                            var rs="账户 修改成功";
+                            if(data>0){
+                                loadData(page,rows,stateId,condition);
+                            }else{
+                                rs="账户 修改失败";
+                            }
+                            //提示框追加信息，并显示
+                            prompt(rs);
+                            //关闭表单
+                            $('#my_alert').css("display","none");
+                            $(".am-dimmer").css("display","none");
+                        }
+                    });
+                }
+                return false;
+            });
+            $("#cancel").click(function(){
+                //关闭表单
+                $('#my_alert').css("display","none");
+                $(".am-dimmer").css("display","none");
+            });
+        }
+
+        //初始化页面
+        loadData(page,rows,stateId,condition);
+
+        /**
+         * 动态多条件分页查询
+         * @param page 当前页
+         * @param rows 每页显示的数量
+         * @param stateId 状态Id
+         * @param condition 共同条件
+         */
+        function loadData(page,rows,stateId,condition){
+            $.ajax({
+               url:'/adminController/PageQuery',
+               type:'post',
+               asyncs:false,
+               data:{
+                   page:page,
+                   rows:rows,
+                   stateId:stateId,
+                   condition:condition
+                },
+                dataType:'json',
+                success:function(data){
+                   var total=data.total;
+                   var lists=data.rows;
+                   $("#content").empty();
+                   for(var i=0;i<lists.length;i++) {
+                      var str=("<tr>\n" +
+                           "                                        <td class=\"am-hide-sm-only\">" + lists[i].adminId.substr(0, 8) + "...  </td>\n" +
+                           "                                        <td>" + lists[i].adminName + "</td>\n" +
+                           "                                        <td>" + lists[i].adminAccount + "</td>\n" +
+                          "                                        <td>" + lists[i].adminPhone + "</td>\n" +
+                          "                                        <td class=\"am-hide-sm-only\">" + lists[i].adminAuthority + "</td>\n" +
+                           "                                        <td class=\"am-hide-sm-only\">" + lists[i].stateName + "</td>\n" +
+                           "                                        <td class=\"am-hide-sm-only\">" + lists[i].admin2Name + "</td>\n" +
+                           "                                        <td class=\"am-hide-sm-only\">" + lists[i].updateDate + "</td>\n" +
+                           "                                        <td>\n" +
+                           "                                            <div class=\"am-btn-toolbar\">\n" +
+                           "                                                <div class=\"am-btn-group am-btn-group-xs\">\n" +
+                           "                                                    <input type='hidden' class='adminId' value='" + lists[i].adminId + "'/>" +
+                           "                                                    <button class=\"am-btn am-btn-default am-btn-xs am-text-secondary edit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button>");
+                       if(lists[i].stateName=="禁用"){
+                          str+=("<input type=\"hidden\" value=\"66e75647-2b10-4553-a43d-2bb30fa33af7\"><button class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del\"><span class=\"am-icon-trash-o\"></span> 恢复</button>" +
+                               "                                                </div>\n" +
+                               "                                            </div>\n" +
+                               "                                        </td>\n" +
+                               "                                    </tr>");
+                       }else{
+                           str+=("<input type='hidden' value='0df82e1d-c318-423f-b506-ef0ca2e628fe'><button class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del\"><span class=\"am-icon-trash-o\"></span> 禁用</button>" +
+                               "                                                </div>\n" +
+                               "                                            </div>\n" +
+                               "                                        </td>\n" +
+                               "                                    </tr>");
+                       }
+                       $("#content").append(str);
+                   }
+                       /**
+                        * 编辑点击事件
+                        */
+                       $(".edit").click(function(){
+                           var rs=false;
+                           $.ajax({
+                              url:'/adminController/isHasEdit',
+                              type:'post',
+                              async:false,
+                              dataType:'text',
+                              success:function(data){
+                                  if(data=="true"){
+                                      rs=true;
+                                  }else if(data=="false"){
+                                      rs=false;
+                                  }
+                              }
+                           });
+                           if(rs){
+                               var adminId=$(this).prev().val();
+                               var adminName=$(this).parent().parent().parent().prev().prev().prev().prev().prev().prev().prev().text();
+                               var adminAuthority=$(this).parent().parent().parent().prev().prev().prev().prev().text();
+                               var adminPhone=$(this).parent().parent().parent().prev().prev().prev().prev().prev().text();
+                               show_alert("编辑管理员信息",formInfo(adminId,adminName,adminAuthority,adminPhone));
+                               $("#accountDiv").css("display","none");
+                               $("#pwdDiv").css("display","none");
+                               url="/adminController/update";
+                           }else{
+                               alert("抱歉，你没有修改权限");
+                           }
+                           return false;
+                       });
+
+
+                        $(".add").click(function(){
+                            show_alert("编辑管理员信息",formInfo("","","",""));
+                            $("#accountDiv").css("display","block");
+                            $("#pwdDiv").css("display","block");
+                            url="/adminController/add";
+                        });
+
+                       /**
+                        * 禁用和恢复点击事件
+                        */
+                       $(".del").click(function(){
+                           var adminId=$(this).parent().children("input").val();
+                           var type=$(this).text();
+                           $.ajax({
+                               url:'/adminController/ByAdminIdUpdateState',
+                               type:'post',
+                               async:false,
+                               data:{
+                                   stateId:$(this).prev().val(), //禁用对应的id
+                                   adminId:adminId
+                               },
+                               dataType:'text',
+                               success:function(data){
+                                   var rs="成功";
+                                    if(data>0){
+                                        loadData(page,rows,stateId,condition);
+                                    }else{
+                                        rs="失败";
+                                    }
+                                   //提示框追加信息，并显示
+                                   prompt("账户"+type+rs);
+                               }
+                           });
+                           return false;
+                       });
+
+                       /**
+                        * 初始化分页栏
+                        */
+                       $("#paging_toolbar").empty();
+                       $("#paging_toolbar").append("<li id=\"prev\"><a href=\"javascript:;\">«</a></li>");
+                       for(var i=1;i<=total;i++){
+                           if(page!=i){
+                               $("#paging_toolbar").append("<li class='page'><a href=\"javascript:;\">"+i+"</a></li>");
+                           }else{
+                               $("#paging_toolbar").append("<li class=\"am-active page\"><a href=\"javascript:;\">"+i+"</a></li>");
+                           }
+                       }
+                       $("#paging_toolbar").append("<li id='next'><a href=\"javascript:;\">»</a></li>");
+
+                       /**
+                        * 上一页点击事件
+                        */
+                       $("#prev").click(function(){
+                           page=page-1;
+                           if(page<1){
+                               page=total;
+                           }
+                          loadData(page,rows,stateId,condition);
+                       });
+
+                       /**
+                        * 下一页点击事件
+                        */
+                       $("#next").click(function(){
+                           page=page+1;
+                           if(page>total){
+                               page=1;
+                           }
+                           loadData(page,rows,stateId,condition);
+                       });
+
+                       /**
+                        * 页数点击事件
+                        */
+                       $(".page").click(function(){
+                           page=$(this).children("a").text();
+                           loadData(page,rows,stateId,condition);
+                       });
+
+                }
+            });
+        }
+
+        /**
+         * 搜索框输入事件：根据管理员名称和姓名查询
+         * */
+        $("#search").keyup(function(){
+           condition=$("#search").val();
+           loadData(1,rows,stateId,condition);
+        });
+
+        /**
+         * 初始化下拉框
+         */
+        $.ajax({
+           url:'/stateController/queryAll',
+           type:'post',
+           dataType:'json',
+           asyncs:false,
+           success:function(data){
+               $("#selectState").empty();
+               $("#selectState").append("<option class='op' value='0'>请选择状态</option>");
+               for(var i=0;i<data.length;i++){
+                   $("#selectState").append("<option class='op' value='"+data[i].stateId+"'>"+data[i].stateName+"</option>\n");
+               }
+           }
+        });
+
+
+        /**
+         * 下拉框选择事件：根据状态查询
+         */
+        $("#selectState").change(function () {
+            stateId=$(this).val();
+            if(stateId==0){
+                stateId="";
+            }
+            loadData(1,rows,stateId,condition);
+        });
+
+        /**
+         *  清空修改密码form表单，并关闭dialog
+         * */
+        function clearFormCloseDialog(){
+            //清空表单
+            $("#oldPwd").val("");
+            $("#newPwd").val("");
+            //关闭dialog
+            $("#consumption_model").modal('close');
+        }
+
+
+        /**
+         * 修改密码点击事件
+         */
+        $("#updatePwd").click(function(){
+            $('#consumption_model').modal({
+                relatedTarget: this,
+               onCancel: function(e) {
+                   clearFormCloseDialog();
+                }
+            });
+        });
+
+        /**
+         * 修改密码
+         */
+        $("#subUpdatePwd").click(function(){
+            var pPattern=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/; //密码：6-16位字母加数字
+            var oldPwd=$("#oldPwd").val();
+            var newPwd=$("#newPwd").val();
+            if(oldPwd==""){
+                alert("请输入原密码");
+                return false;
+            }else if(!pPattern.test(newPwd)){
+                alert("新密码请输入6-16位字母加数字");
+                return false;
+            }
+            $.ajax({
+               url:'/adminController/updateAdminPassword',
+               type:'post',
+               data:{
+                   oldPwd:oldPwd,
+                   newPwd:newPwd
+               },
+               dataType:'text',
+               success:function(data){
+                    alert(data);
+                    if(data=="修改成功，请重新登陆"){
+                        window.location.href="/adminController/Exit";
+                    }
+               }
+            });
+           return false;
+        });
+
+    });
+</script>

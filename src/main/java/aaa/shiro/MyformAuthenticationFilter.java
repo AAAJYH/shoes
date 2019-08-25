@@ -12,6 +12,7 @@ import javax.servlet.ServletResponse;
 
 public class MyformAuthenticationFilter extends FormAuthenticationFilter
 {
+    @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception
     {
         String successUrl="/adminController/SuccessIndex";
